@@ -153,6 +153,7 @@ app.get("/refresh_token", function (req, res) {
     json: true,
   };
 
+  
   request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
