@@ -18,7 +18,7 @@ export default function callBack() {
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("refresh_token", refresh_token);
   }
-  const limit: number = 50;
+  const limit: number = 20;
   const timeRange: string = "medium_term";
   async function getTracks() {
     const response = await fetch(
@@ -38,6 +38,9 @@ export default function callBack() {
   return (
     <div>
       <button onClick={getTracks}> Top Tracks</button>
+      <button onClick={() => router.push("/top-tracks")}> Top Tracks</button>
+      <button onClick={() => router.push("/top-artists")}> Top Artists</button>
+      <button onClick={() => router.push("/recently-played")}> Recently Played</button>
     </div>
   );
 }
