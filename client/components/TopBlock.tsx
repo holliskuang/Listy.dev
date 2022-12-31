@@ -1,9 +1,12 @@
-import {  response } from "express";
+import { response } from "express";
 import { crossOriginResourcePolicy } from "helmet";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AllBlocks from "../widgets/AllBlocks";
 
 export default function TopBlock(AppProps) {
   const [time, setTime] = useState("long_term");
+  const [blocks, setBlocks] = useState({});
+  useEffect(() => getTop, []);
 
   async function getTop() {
     const response = await fetch(
@@ -17,20 +20,18 @@ export default function TopBlock(AppProps) {
       }
     )
       .then((response) => response.json())
-      .then((data)=> {console.log(data.items) ; return data.items});
+      .then((data) => setBlocks(data.items));
   }
 
-    getTop();
-  function createIndividualBlocks(AppProps) {
-    //artist - image , Name,Link , Genres ,
-    // Song - image, Name, Link , Artist
-  }
+  //artist - image , Name,Link , Genres ,
+  // Song - image, Name, Link , Artist
 
   return (
     <div>
       <button onClick={() => setTime("long_term")}>All time</button>
       <button onClick={() => setTime("medium_term")}>Last 6 months</button>
       <button onClick={() => setTime("short_term")}>Last month</button>
+      <AllBlocks data={blocks} />
     </div>
   );
 }
