@@ -1,5 +1,6 @@
 import FlexStart from "./FlexStart";
 import Box from "@mui/material/Box";
+import { useRouter } from 'next/router'
 
 export default function IndividualBlock(AppProps: {
   number: any;
@@ -11,8 +12,9 @@ export default function IndividualBlock(AppProps: {
   artists: any;
 }) {
   const { number, image, genres, link, name, type, artists } = AppProps;
+  const router = useRouter();
 
-  function getTitleCase(str:string) {
+  function getTitleCase(str: string) {
     const titleCase = str
       .toLowerCase()
       .split(" ")
@@ -26,8 +28,8 @@ export default function IndividualBlock(AppProps: {
 
   function applyTitleCase(arr: any) {
     let emptyArr: any = [];
-    arr.map((item:any) => {
-      item.map((x:any) => {
+    arr.map((item: any) => {
+      item.map((x: any) => {
         emptyArr.push(getTitleCase(x));
       });
     });
@@ -37,7 +39,10 @@ export default function IndividualBlock(AppProps: {
 
   const presentationalGenres = applyTitleCase([genres.slice(0, 3)]);
   return (
-    <FlexStart>
+    <FlexStart
+      onClick={()=>{router.push(link)}}
+      sx={{ "&:hover": { cursor: "pointer" } }}
+    >
       <FlexStart>
         {number}
         <Box
@@ -49,16 +54,32 @@ export default function IndividualBlock(AppProps: {
           src={image}
         />
       </FlexStart>
-      <FlexStart
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        <Box sx={{ width: "100%" }}>{name}</Box>
-        <Box>{presentationalGenres}</Box>
-      </FlexStart>
+
+      {type === "artists" && (
+        <FlexStart
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          <Box sx={{ width: "100%" }}>{name}</Box>
+          <Box>{presentationalGenres}</Box>
+        </FlexStart>
+      )}
+
+      {type === "tracks" && (
+        <FlexStart
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          <Box sx={{ width: "100%" }}>{name}</Box>
+          <Box>{artists}</Box>
+        </FlexStart>
+      )}
     </FlexStart>
   );
 }

@@ -1,15 +1,17 @@
 import { Button } from "@mui/material";
 import { response } from "express";
 import { crossOriginResourcePolicy } from "helmet";
+import { type } from "os";
 import React, { useState, useEffect } from "react";
 import AllBlocks from "../widgets/AllBlocks";
 
 export default function TopBlock(AppProps: { type: any }) {
   const [time, setTime] = useState("long_term");
+  const [typeOf, setTypeOf]= useState(AppProps.type);
   const [blocks, setBlocks] = useState({});
   useEffect(() => {
     getTop();
-  }, []);
+  }, [time,typeOf]);
 
   async function getTop() {
     const response = await fetch(
