@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-export default function callBack() {
+export default function CallBack() {
   const router = useRouter();
   useEffect(getCode, []);
   // get accessCode from url, store to localStorage, call function once with useEffect
@@ -18,7 +18,7 @@ export default function callBack() {
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("refresh_token", refresh_token);
   }
-  
+
   const limit: number = 20;
   const timeRange: string = "medium_term";
   async function getTracks() {
