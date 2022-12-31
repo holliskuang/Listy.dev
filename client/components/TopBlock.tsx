@@ -10,7 +10,8 @@ export default function TopBlock(AppProps) {
 
   async function getTop() {
     const response = await fetch(
-      `https://api.spotify.com/v1/me/top/${AppProps.type}?limit=50&time_range=${time}`,
+     // `https://api.spotify.com/v1/me/top/${AppProps.type}?limit=50&time_range=${time}`,
+     `https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=${time}`,
       {
         method: "GET",
         headers: {
@@ -30,7 +31,7 @@ export default function TopBlock(AppProps) {
       <button onClick={() => setTime("long_term")}>All time</button>
       <button onClick={() => setTime("medium_term")}>Last 6 months</button>
       <button onClick={() => setTime("short_term")}>Last month</button>
-      <AllBlocks data={blocks} />
+      <AllBlocks data={blocks} type={AppProps.type}/>
     </div>
   );
 }
