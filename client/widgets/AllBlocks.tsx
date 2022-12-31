@@ -1,12 +1,20 @@
 import IndividualBlock from "./IndividualBlock";
 
 export default function AllBlocks(AppProps) {
-    console.log(AppProps.data);
+  const array = Object.entries(AppProps.data);
+  console.log(array);
+
   return (
     <>
-      {Object.keys(AppProps.data).map((key) => {
-       console.log(key);
-      })}
+      {array.map((block) => (
+        <IndividualBlock
+          number={parseInt(block[0]) + 1}
+          image={block[1].images[0]}
+          name={block[1].name}
+          link={block[1].external_urls.spotify}
+          genres={block[1].genres}
+        />
+      ))}
     </>
   );
 }

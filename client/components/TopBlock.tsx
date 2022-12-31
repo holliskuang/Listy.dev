@@ -22,7 +22,6 @@ export default function TopBlock(AppProps) {
       .then((response) => response.json())
       .then((data) => setBlocks(data.items));
   }
-
   //artist - image , Name,Link , Genres ,
   // Song - image, Name, Link , Artist
 
