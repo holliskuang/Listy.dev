@@ -11,13 +11,15 @@ export default function FormDialog(AppProps: {
   type: string;
   data: string | unknown[];
   setPlaylistTitle: Function;
+  createAndAddTracks: Function;
 }) {
   const [open, setOpen] = React.useState(false);
   const [currentField, updateCurrentField] = React.useState("");
 
-  const handleSubmit= () => {
+  const handleSubmit= async () => {
     handleClose();
     AppProps.setPlaylistTitle(currentField);
+    AppProps.createAndAddTracks();
   }
 
   const handleClickOpen = () => {

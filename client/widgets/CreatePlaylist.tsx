@@ -9,20 +9,25 @@ export default function CreatePlaylist(props: {
 }) {
   const [playlistTitle, setPlaylistTitle] = useState(null);
 
-  const createAndAddTracks = async () => {
-    await fetch(`https://api.spotify.com/v1/users/1211305298/playlists`, {
+  async function createAndAddTracks() {
+    // create Playlist
+    const id = localStorage.getItem("id");
+    await fetch(`https://api.spotify.com/v1/users/${id}/playlists`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        name: `${playlistTitle}`,
       },
+      body: JSON.stringify({
+        name: playlistTitle,
+        description: `Your top ${props.type} on Spotify!`,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
       });
-  };
+  }
 
   return (
     <FlexBetween
@@ -45,6 +50,7 @@ export default function CreatePlaylist(props: {
         type={props.type}
         data={props.data}
         setPlaylistTitle={setPlaylistTitle}
+        createAndAddTracks={createAndAddTracks}
       ></FormDialog>
     </FlexBetween>
   );
