@@ -8,11 +8,12 @@ export default function CreatePlaylist(props: {
   sx?: any;
 }) {
   const [playlistTitle, setPlaylistTitle] = useState(null);
-
+  // Isolate Track URIs for Top Tracks
+  const trackURI = props.data.map((block: any) => block[1].uri);
+  console.log(trackURI);
   // create playlist when form gets submitted
   useEffect(() => {
     if (playlistTitle != null) {
-      console.log(playlistTitle);
       createAndAddTracks();
       setPlaylistTitle(null);
     }
@@ -20,8 +21,28 @@ export default function CreatePlaylist(props: {
 
   // get Every Single Artist URI
   function getURI() {
-    const uri = props.data.map((track: any) => track[1].uri);
+    const uri = props.data.map((artist: any) => artist[1].uri);
     return uri;
+  }
+
+  // get a track from each artist uri
+  async function getTrackForEachArtist() {
+    const artistURIs = getURI();
+    const tracks = await Promise.all(
+      artistURIs.map((artistURI: string) => {
+        fetch(
+          `https://api.spotify.com/v1/artists/${artistURI}/top-tracks?market=US`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            },
+          }
+        );
+      })
+    );
+    console.log(tracks);
   }
 
   async function createAndAddTracks() {
@@ -40,7 +61,11 @@ export default function CreatePlaylist(props: {
     })
       .then((response) => response.json())
       .then((data) => {
-        addToPlaylist(data.id);
+        // if we are creating a playlist from top tracks
+        if (props.type === "tracks") {
+          addToPlaylist(data.id);
+        } else if (props.type === "artists") {
+        }
       });
 
     // add tracks to playlist
@@ -51,11 +76,10 @@ export default function CreatePlaylist(props: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
-        body: JSON.stringify({
-          uris: ["spotify:track:5VfEuwErhx6X4eaPbyBfyu"],
-        }),
-      });
-
+        body: JSON.stringify({ uris: trackURI }),
+      })
+      .then((response) => response.json())
+      .then((data) => {console.log(data)})
       console.log("done");
     }
   }
@@ -75,7 +99,7 @@ export default function CreatePlaylist(props: {
       </FlexBetween>
       <FlexBetween>
         This creates a playlist from your All time Top-50 artists with a track
-        from each artist in random order.
+        from each artist.
       </FlexBetween>
       <FormDialog
         type={props.type}

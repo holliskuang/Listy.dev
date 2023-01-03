@@ -5,10 +5,10 @@ export default function AllBlocks(AppProps: {
   data: { [s: string]: unknown } | ArrayLike<unknown>;
   type: string;
 }) {
-  
   const array = Object.entries(AppProps.data);
-  // Artist List
-  console.log(AppProps.data);
+
+
+
   if (AppProps.type === "artists") {
     return (
       <>
@@ -43,6 +43,7 @@ export default function AllBlocks(AppProps: {
             genres={undefined}
           />
         ))}
+        <CreatePlaylist type={AppProps.type} data={array} />
       </>
     );
 }
