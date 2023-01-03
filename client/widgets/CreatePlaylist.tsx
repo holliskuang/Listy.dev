@@ -65,14 +65,26 @@ export default function CreatePlaylist(props: {
         // if we are creating a playlist from top tracks
         if (props.type === "tracks") {
           addToPlaylist(data.id);
-          // extract playlist url to redirect to
-          console.log(data.external_urls.spotify);
-
           // next steps: create popup that says "playlist created" and redirects to playlist
         } else if (props.type === "artists") {
           console.log("hi");
         }
       });
+
+    async function createPopup(playlistId: string) {
+      await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.images.url);
+          console.log(data.external_urls.spotify);
+        });
+    }
 
     // add tracks to playlist
     async function addToPlaylist(id: string) {
@@ -85,6 +97,7 @@ export default function CreatePlaylist(props: {
         body: JSON.stringify({ uris: trackURI }),
       });
       console.log("done");
+      createPopup(id);
     }
   }
 
