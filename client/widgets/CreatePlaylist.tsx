@@ -1,6 +1,7 @@
 import FlexBetween from "./FlexBetween";
 import FormDialog from "./FormDialog";
 import { useState, useEffect } from "react";
+import { json } from "body-parser";
 
 export default function CreatePlaylist(props: {
   type: string;
@@ -64,9 +65,12 @@ export default function CreatePlaylist(props: {
         // if we are creating a playlist from top tracks
         if (props.type === "tracks") {
           addToPlaylist(data.id);
+          console.log(data);
         } else if (props.type === "artists") {
+          console.log("hi");
         }
-      });
+      })
+      
 
     // add tracks to playlist
     async function addToPlaylist(id: string) {
@@ -77,9 +81,7 @@ export default function CreatePlaylist(props: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
         body: JSON.stringify({ uris: trackURI }),
-      })
-      .then((response) => response.json())
-      .then((data) => {console.log(data)})
+      });
       console.log("done");
     }
   }
