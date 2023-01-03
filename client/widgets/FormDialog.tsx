@@ -11,7 +11,6 @@ export default function FormDialog(AppProps: {
   type: string;
   data: string[] | unknown[];
   setPlaylistTitle: Function;
-  createAndAddTracks: Function;
 }) {
   const [open, setOpen] = React.useState(false);
   const [currentField, updateCurrentField] = React.useState("");
@@ -19,7 +18,6 @@ export default function FormDialog(AppProps: {
   const handleSubmit = async () => {
     handleClose();
     AppProps.setPlaylistTitle(currentField);
-    AppProps.createAndAddTracks();
   };
 
   const handleClickOpen = () => {
@@ -33,6 +31,7 @@ export default function FormDialog(AppProps: {
   const handleTextChange = (e: any) => {
     updateCurrentField(e.target.value);
   };
+  console.log(currentField);
 
   return (
     <div>
@@ -49,9 +48,10 @@ export default function FormDialog(AppProps: {
             onChange={handleTextChange}
             autoFocus
             margin="dense"
-            id="name"
+            name="name"
             fullWidth
             variant="standard"
+            value={currentField}
           />
         </DialogContent>
         <DialogActions>
