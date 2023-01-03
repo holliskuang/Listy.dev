@@ -65,12 +65,14 @@ export default function CreatePlaylist(props: {
         // if we are creating a playlist from top tracks
         if (props.type === "tracks") {
           addToPlaylist(data.id);
-          console.log(data);
+          // extract playlist url to redirect to
+          console.log(data.external_urls.spotify);
+
+          // next steps: create popup that says "playlist created" and redirects to playlist
         } else if (props.type === "artists") {
           console.log("hi");
         }
-      })
-      
+      });
 
     // add tracks to playlist
     async function addToPlaylist(id: string) {
