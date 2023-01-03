@@ -1,5 +1,5 @@
 import FlexBetween from "../widgets/FlexBetween";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 
 export default function SideBar() {
   const router = useRouter();
@@ -7,7 +7,6 @@ export default function SideBar() {
     <FlexBetween sx={{ width: "8vw", flexDirection: "row", flexWrap: "wrap" }}>
       <button onClick={() => router.push("/top-tracks")}> Top Tracks</button>
       <button onClick={() => router.push("/top-artists")}> Top Artists</button>
-      <button onClick={() => router.push("/recently-played")}> Recently Played</button>
     </FlexBetween>
   );
 }

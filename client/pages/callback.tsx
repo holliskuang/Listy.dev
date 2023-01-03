@@ -23,7 +23,6 @@ export default function CallBack() {
     <div>
       <button onClick={() => router.push("/top-tracks")}> Top Tracks</button>
       <button onClick={() => router.push("/top-artists")}> Top Artists</button>
-      <button onClick={() => router.push("/recently-played")}> Recently Played</button>
     </div>
   );
 }

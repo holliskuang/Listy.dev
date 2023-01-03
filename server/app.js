@@ -110,7 +110,6 @@ app.get("/callback", function (req, res) {
           headers: { Authorization: "Bearer " + access_token },
           json: true,
         };
-
         // use the access token to access the Spotify Web API
         request.get(options, function (error, response, body) {
           console.log(body);
@@ -153,7 +152,6 @@ app.get("/refresh_token", function (req, res) {
     json: true,
   };
 
-  
   request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;

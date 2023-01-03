@@ -1,6 +1,6 @@
 import FlexStart from "./FlexStart";
 import Box from "@mui/material/Box";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 export default function IndividualBlock(AppProps: {
   number: any;
@@ -37,10 +37,11 @@ export default function IndividualBlock(AppProps: {
     return emptyArr.join(" , ");
   }
 
-  const presentationalGenres = applyTitleCase([genres.slice(0, 3)]);
   return (
     <FlexStart
-      onClick={()=>{router.push(link)}}
+      onClick={() => {
+        router.push(link);
+      }}
       sx={{ "&:hover": { cursor: "pointer" } }}
     >
       <FlexStart>
@@ -64,7 +65,7 @@ export default function IndividualBlock(AppProps: {
           }}
         >
           <Box sx={{ width: "100%" }}>{name}</Box>
-          <Box>{presentationalGenres}</Box>
+          <Box>{applyTitleCase([genres.slice(0, 3)])}</Box>
         </FlexStart>
       )}
 
