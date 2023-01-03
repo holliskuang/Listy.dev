@@ -4,10 +4,18 @@ import { useState } from "react";
 
 export default function CreatePlaylist(props: {
   type: string;
-  data: string | unknown[];
+  data: string[] | unknown[];
   sx?: any;
 }) {
   const [playlistTitle, setPlaylistTitle] = useState(null);
+
+
+  // get Every Single Artist URI 
+  function getURI() {
+    const uri = props.data.map((track: any) => track[1].uri);
+    return uri;
+  }
+
 
   async function createAndAddTracks() {
     // create Playlist
@@ -25,8 +33,23 @@ export default function CreatePlaylist(props: {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        /* addToPlaylist(data.id, props.data)*/
+        console.log(data.id);
       });
+
+    // add tracks to playlist
+    async function addToPlaylist(id: string, uris: string[]) {
+      await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+        body: JSON.stringify({
+          uris: props.data,
+        }),
+      });
+    }
   }
 
   return (

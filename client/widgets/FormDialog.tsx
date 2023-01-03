@@ -9,18 +9,18 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 export default function FormDialog(AppProps: {
   type: string;
-  data: string | unknown[];
+  data: string[] | unknown[];
   setPlaylistTitle: Function;
   createAndAddTracks: Function;
 }) {
   const [open, setOpen] = React.useState(false);
   const [currentField, updateCurrentField] = React.useState("");
 
-  const handleSubmit= async () => {
+  const handleSubmit = async () => {
     handleClose();
     AppProps.setPlaylistTitle(currentField);
     AppProps.createAndAddTracks();
-  }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,7 +30,7 @@ export default function FormDialog(AppProps: {
     setOpen(false);
   };
 
-  const handleTextChange = (e:any) => {
+  const handleTextChange = (e: any) => {
     updateCurrentField(e.target.value);
   };
 
