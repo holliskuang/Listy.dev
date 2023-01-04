@@ -27,6 +27,7 @@ export default function CreatePlaylist(props: {
   useEffect(() => {
     if (playlistURL != "" && playlistImage != "") {
       setPopup(true);
+      console.log("popup is true, playlistURL != ''");
     }
   }, [playlistURL]);
 

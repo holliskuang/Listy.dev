@@ -6,9 +6,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function AlertDialog(props: { img: string; url: string }) {
-  const [open, setOpen] = React.useState(true);
+  useEffect(() => {
+    setOpen(true);
+  }, [props.url]);
+
+  const [open, setOpen] = React.useState(false);
   const router = useRouter();
   const handleClose = () => {
     setOpen(false);
