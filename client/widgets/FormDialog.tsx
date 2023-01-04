@@ -18,6 +18,7 @@ export default function FormDialog(AppProps: {
   const handleSubmit = async () => {
     handleClose();
     AppProps.setPlaylistTitle(currentField);
+    updateCurrentField("");
   };
 
   const handleClickOpen = () => {

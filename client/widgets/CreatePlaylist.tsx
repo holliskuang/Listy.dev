@@ -2,6 +2,7 @@ import FlexBetween from "./FlexBetween";
 import FormDialog from "./FormDialog";
 import { useState, useEffect } from "react";
 import { json } from "body-parser";
+import AlertDialog from "./AlertDialog";
 
 export default function CreatePlaylist(props: {
   type: string;
@@ -9,6 +10,9 @@ export default function CreatePlaylist(props: {
   sx?: any;
 }) {
   const [playlistTitle, setPlaylistTitle] = useState(null);
+  const [popup, setPopup] = useState(false);
+  var img: string = "";
+  var url: string = "";
   // Isolate Track URIs for Top Tracks
   const trackURI = props.data.map((block: any) => block[1].uri);
   console.log(trackURI);
@@ -81,8 +85,9 @@ export default function CreatePlaylist(props: {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.images.url);
-          console.log(data.external_urls.spotify);
+          img = data.images[1].url;
+          url = data.external_urls.spotify;
+          setPopup(true);
         });
     }
 
