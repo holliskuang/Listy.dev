@@ -36,7 +36,6 @@ export default function CreatePlaylist(props: {
     const uri = props.data.map((artist: any) => artist[1].uri);
     const uriSlice = uri.slice(0, 20);
     const uriId = uriSlice.map((uri: string) => uri.slice(15));
-    console.log(` uriId  - > ${uriId} `);
     return uriId;
   }
 
@@ -45,7 +44,7 @@ export default function CreatePlaylist(props: {
     const artistURIs = getURI();
     const tracks = await Promise.all(
       artistURIs.map((artistURI: string) => {
-        fetch(
+        return fetch(
           `https://api.spotify.com/v1/artists/${artistURI}/top-tracks?market=US`,
           {
             method: "GET",
@@ -54,18 +53,20 @@ export default function CreatePlaylist(props: {
               Authorization: `Bearer ${localStorage.getItem("access_token")}`,
             },
           }
-        )
-          .then((response) => response.json())
-          .then((data) => data.tracks)
-          .then((tracks) => {})
-
-            // data.tracks[0].uri
-            // data.tracks[1].uri
-            //... to 4 
-          });
+        );
       })
     );
-    return tracks;
+
+    const jsonTrack = await Promise.all(
+      tracks.map((track: any) => track.json())
+    );
+    const tracksURI = jsonTrack.map((track: any) => track.tracks);
+    const topTracks = tracksURI.map((track: any) => track.slice(0, 5));
+    const collectionOfURIs = topTracks.map((track: any) =>
+      track.map((track: any) => track.uri)
+    );
+    const finalURIs = collectionOfURIs.flat();
+    return (finalURIs);
   }
 
   async function createAndAddTracks() {
@@ -124,21 +125,20 @@ export default function CreatePlaylist(props: {
 
       // for top artists
       else if (props.type === "artists") {
-        await getTrackForEachArtist();
-        /*    .then((tracks) => {
-         fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-          body: JSON.stringify({ uris: tracks }),
+        await getTrackForEachArtist().then((tracks) => {
+          fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            },
+            body: JSON.stringify({ uris: tracks }),
+          });
         });
-       }) */
       }
 
       console.log("done");
-      /*  createPopup(id); */
+      createPopup(id);
     }
   }
 
