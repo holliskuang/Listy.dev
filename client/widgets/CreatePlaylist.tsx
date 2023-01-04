@@ -31,13 +31,16 @@ export default function CreatePlaylist(props: {
     }
   }, [playlistURL]);
 
-  // get Every Single Artist URI
+  // get Top 20 Artist URI
   function getURI() {
     const uri = props.data.map((artist: any) => artist[1].uri);
-    return uri;
+    const uriSlice = uri.slice(0, 20);
+    const uriId = uriSlice.map((uri: string) => uri.slice(15));
+    console.log(` uriId  - > ${uriId} `);
+    return uriId;
   }
 
-  // get a track from each artist uri
+  // get 5 tracks from each artist uri
   async function getTrackForEachArtist() {
     const artistURIs = getURI();
     const tracks = await Promise.all(
@@ -51,10 +54,18 @@ export default function CreatePlaylist(props: {
               Authorization: `Bearer ${localStorage.getItem("access_token")}`,
             },
           }
-        );
+        )
+          .then((response) => response.json())
+          .then((data) => data.tracks)
+          .then((tracks) => {})
+
+            // data.tracks[0].uri
+            // data.tracks[1].uri
+            //... to 4 
+          });
       })
     );
-    console.log(tracks);
+    return tracks;
   }
 
   async function createAndAddTracks() {
@@ -76,9 +87,9 @@ export default function CreatePlaylist(props: {
         // if we are creating a playlist from top tracks
         if (props.type === "tracks") {
           addToPlaylist(data.id);
-          // next steps: create popup that says "playlist created" and redirects to playlist
+          // playlist from top artists
         } else if (props.type === "artists") {
-          console.log("hi");
+          addToPlaylist(data.id);
         }
       });
 
@@ -99,16 +110,35 @@ export default function CreatePlaylist(props: {
 
     // add tracks to playlist
     async function addToPlaylist(id: string) {
-      await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-        body: JSON.stringify({ uris: trackURI }),
-      });
+      // for top tracks
+      if (props.type === "tracks") {
+        await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+          body: JSON.stringify({ uris: trackURI }),
+        });
+      }
+
+      // for top artists
+      else if (props.type === "artists") {
+        await getTrackForEachArtist();
+        /*    .then((tracks) => {
+         fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+          body: JSON.stringify({ uris: tracks }),
+        });
+       }) */
+      }
+
       console.log("done");
-      createPopup(id);
+      /*  createPopup(id); */
     }
   }
 
