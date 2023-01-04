@@ -1,7 +1,6 @@
 import FlexBetween from "./FlexBetween";
 import FormDialog from "./FormDialog";
 import { useState, useEffect } from "react";
-import { json } from "body-parser";
 import AlertDialog from "./AlertDialog";
 
 export default function CreatePlaylist(props: {
@@ -11,8 +10,8 @@ export default function CreatePlaylist(props: {
 }) {
   const [playlistTitle, setPlaylistTitle] = useState(null);
   const [popup, setPopup] = useState(false);
-  var img: string = "";
-  var url: string = "";
+  const [playlistURL, setPlaylistURL] = useState("");
+  const [playlistImage, setPlaylistImage] = useState("");
   // Isolate Track URIs for Top Tracks
   const trackURI = props.data.map((block: any) => block[1].uri);
   console.log(trackURI);
@@ -22,7 +21,14 @@ export default function CreatePlaylist(props: {
       createAndAddTracks();
       setPlaylistTitle(null);
     }
-  }, [playlistTitle]);
+  });
+
+  // create popup when url and image state is updated
+  useEffect(() => {
+    if (playlistURL != "" && playlistImage != "") {
+      setPopup(true);
+    }
+  }, [playlistURL]);
 
   // get Every Single Artist URI
   function getURI() {
@@ -85,9 +91,8 @@ export default function CreatePlaylist(props: {
       })
         .then((response) => response.json())
         .then((data) => {
-          img = data.images[1].url;
-          url = data.external_urls.spotify;
-          setPopup(true);
+          setPlaylistImage(data.images[1].url);
+          setPlaylistURL(data.external_urls.spotify);
         });
     }
 
@@ -128,6 +133,9 @@ export default function CreatePlaylist(props: {
         data={props.data}
         setPlaylistTitle={setPlaylistTitle}
       ></FormDialog>
+      {popup && (
+        <AlertDialog url={playlistURL} img={playlistImage}></AlertDialog>
+      )}
     </FlexBetween>
   );
 }
