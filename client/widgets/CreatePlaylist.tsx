@@ -66,7 +66,7 @@ export default function CreatePlaylist(props: {
       track.map((track: any) => track.uri)
     );
     const finalURIs = collectionOfURIs.flat();
-    return (finalURIs);
+    return finalURIs;
   }
 
   async function createAndAddTracks() {
@@ -104,6 +104,7 @@ export default function CreatePlaylist(props: {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           setPlaylistImage(data.images[1].url);
           setPlaylistURL(data.external_urls.spotify);
         });
@@ -138,7 +139,10 @@ export default function CreatePlaylist(props: {
       }
 
       console.log("done");
-      createPopup(id);
+
+      setTimeout(() => {
+        createPopup(id);
+      }, 2000);
     }
   }
 
