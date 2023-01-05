@@ -7,22 +7,6 @@ export default function AllBlocks(AppProps: {
 }) {
   const array = Object.entries(AppProps.data);
 
-  async function getRecent() {
-    await fetch(
-      `http://localhost:8888/recently_played/?access_token=${localStorage.getItem(
-        "access_token"
-      )}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }
-
   if (AppProps.type === "artists") {
     return (
       <>
@@ -65,7 +49,17 @@ export default function AllBlocks(AppProps: {
   else if (AppProps.type === "recentlyPlayed") {
     return (
       <>
-        <button onClick={() => getRecent()}>HELLO!</button>
+         {array.map((block: any) => (
+          <IndividualBlock
+            image={block[1].track.album.images[0].url}
+            name={block[1].track.name}
+            link={block[1].track.external_urls.spotify}
+            artists={block[1].track.artists[0].name}
+            type={AppProps.type}
+            timeStamp={block[1].played_at}
+          />
+        ))}
+        <CreatePlaylist type={AppProps.type} data={array} />
       </>
     );
   }

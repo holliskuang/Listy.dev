@@ -3,16 +3,32 @@ import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 
 export default function IndividualBlock(AppProps: {
-  number: any;
+  number?: any;
   image: any;
-  genres: any;
+  genres?: any;
   link: any;
   name: any;
   type: any;
   artists: any;
+  timeStamp?: any;
 }) {
   const { number, image, genres, link, name, type, artists } = AppProps;
   const router = useRouter();
+
+  function adjustToLocalTime() :string{
+    var localDate= new Date(AppProps.timeStamp);
+    var HourMinute= localDate.toLocaleString([],{hour: "2-digit", minute: "2-digit"});
+    if (HourMinute[0] === "0") {
+      HourMinute = HourMinute.slice(1);
+    }
+    //if date is not today, show day of week
+    if (localDate.toDateString() !== new Date().toDateString()) {
+      var DayOfWeek = localDate.toLocaleString([],{weekday: "short"});
+      HourMinute = DayOfWeek + " " + HourMinute;
+    }
+    return HourMinute;
+  }
+  var time:string= adjustToLocalTime();
 
   function getTitleCase(str: string) {
     const titleCase = str
@@ -80,6 +96,19 @@ export default function IndividualBlock(AppProps: {
           <Box sx={{ width: "100%" }}>{name}</Box>
           <Box>{artists}</Box>
         </FlexStart>
+      )}
+
+      {type === "recentlyPlayed" && (
+        <FlexStart     sx={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+        }}
+      >
+        <Box sx={{ width: "100%" }}>{name}</Box>
+        <Box>{artists}</Box>
+        <Box>{time}</Box>
+      </FlexStart>
       )}
     </FlexStart>
   );

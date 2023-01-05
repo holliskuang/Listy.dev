@@ -22,12 +22,26 @@ export default function TopBlock(AppProps: { type: any }) {
       )
         .then((response) => response.json())
         .then((data) => setBlocks(data.items));
+    } else if (AppProps.type === "recentlyPlayed") {
+      await fetch(
+        `http://localhost:8888/recently_played/?access_token=${localStorage.getItem(
+          "access_token"
+        )}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => setBlocks(data.items));
     }
+
+    //artist - image , Name,Link , Genres ,
+    // Song - image, Name, Link , Artist
+    //Recently Played - image, Name, Link, Artist, Time
   }
-
-  //artist - image , Name,Link , Genres ,
-  // Song - image, Name, Link , Artist
-
   return (
     <div>
       <button onClick={() => setTime("long_term")}>All time</button>
