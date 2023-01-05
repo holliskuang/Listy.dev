@@ -44,9 +44,13 @@ export default function TopBlock(AppProps: { type: any }) {
   }
   return (
     <div>
-      <button onClick={() => setTime("long_term")}>All time</button>
-      <button onClick={() => setTime("medium_term")}>Last 6 months</button>
-      <button onClick={() => setTime("short_term")}>Last month</button>
+      {AppProps.type != "recentlyPlayed" && (
+        <>
+          <button onClick={() => setTime("long_term")}>All time</button>
+          <button onClick={() => setTime("medium_term")}>Last 6 months</button>
+          <button onClick={() => setTime("short_term")}>Last month</button>
+        </>
+      )}
       <AllBlocks data={blocks} type={AppProps.type} />
     </div>
   );

@@ -80,7 +80,7 @@ export default function CreatePlaylist(props: {
       },
       body: JSON.stringify({
         name: `${playlistTitle}`,
-        description: `Your top ${props.type} on Spotify!`,
+        description: `Your top ${props.type!==`recentlyPlayed`? props.type: "recent plays"} on Spotify!`,
       }),
     })
       .then((response) => response.json())
@@ -92,23 +92,12 @@ export default function CreatePlaylist(props: {
         } else if (props.type === "artists") {
           addToPlaylist(data.id);
         }
+        else if (props.type==="recentlyPlayed"){
+          addToPlaylist(data.id);
+        }
       });
 
-    async function createPopup(playlistId: string) {
-      await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setPlaylistImage(data.images[1].url);
-          setPlaylistURL(data.external_urls.spotify);
-        });
-    }
+ 
 
     // add tracks to playlist
     async function addToPlaylist(id: string) {
@@ -137,14 +126,42 @@ export default function CreatePlaylist(props: {
           });
         });
       }
+      else if (props.type==="recentlyPlayed"){
+        const recentPlayedURI = props.data.map((block: any) => block[1].track.uri)
+        await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+          body: JSON.stringify({ uris: recentPlayedURI }),
+        });
+      }
+
 
       console.log("done");
 
       setTimeout(() => {
         createPopup(id);
-      }, 2000);
+      }, 1000);
     }
   }
+
+     async function createPopup(playlistId: string) {
+      await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setPlaylistImage(data.images[1].url);
+          setPlaylistURL(data.external_urls.spotify);
+        });
+    }
 
   return (
     <FlexBetween
@@ -159,10 +176,18 @@ export default function CreatePlaylist(props: {
       <FlexBetween width="100%" sx={{ justifyContent: "center" }}>
         Create Your Top {props.type} Playlist
       </FlexBetween>
-      <FlexBetween>
-        This creates a playlist from your All time Top-50 artists with a track
-        from each artist.
-      </FlexBetween>
+      {props.type !== "recentlyPlayed" ? (
+        <FlexBetween>
+          This creates a playlist from your Top-50 {props.type}{" "}
+          {props.type == "artists" &&
+            `with a
+          track from each artist.`}
+        </FlexBetween>
+      ) : (
+        <FlexBetween>
+          This creates a playlist from your 50 most recently played tracks!
+        </FlexBetween>
+      )}
       <FormDialog
         type={props.type}
         data={props.data}
