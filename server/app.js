@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
+import fetch from "node-fetch";
 
 /* secret variables */
 dotenv.config();
@@ -55,7 +56,7 @@ app.get("/login", function (req, res) {
 
   // your application requests authorization
   var scope =
-    "user-read-private user-read-email user-top-read playlist-modify-public";
+    "user-read-private user-read-email user-top-read playlist-modify-public user-read-recently-played user-read-currently-playing";
   res.redirect(
     "https://accounts.spotify.com/authorize?" +
       querystring.stringify({
@@ -171,14 +172,12 @@ app.get("/refresh_token", function (req, res) {
 });
 
 app.get("/recently_played*", function (req, res) {
-  var access_token = req.query.access_token;
-  res.json(access_token);
-  res.end();
+  const access_token = req.query.access_token;
+
   const date = new Date();
   const time = date.getTime();
-  const urlHelper = `https://api.spotify.com/v1/me/player/recently-played#before=${time}`;
+  const urlHelper = `https://api.spotify.com/v1/me/player/recently-played#before=${time}&limit=50`;
   const authOptions = {
-    url: urlHelper,
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -186,9 +185,14 @@ app.get("/recently_played*", function (req, res) {
     },
     json: true,
   };
-
-  req.get(authOptions, function (error, response, body) {
-    res.send(JSON.parse(body));
+  async function callAPIfromBackEnd() {
+    const waiting = await fetch(urlHelper, authOptions).then((res) =>
+      res.json()
+    );
+    return waiting;
+  }
+  callAPIfromBackEnd().then((data) => {
+    res.send(data);
   });
 });
 

@@ -7,9 +7,9 @@ export default function AllBlocks(AppProps: {
 }) {
   const array = Object.entries(AppProps.data);
 
-  function getRecent() {
-    fetch(
-      `http://localhost:8888/recently_played/${localStorage.getItem(
+  async function getRecent() {
+   await  fetch(
+      `http://localhost:8888/recently_played/?access_token=${localStorage.getItem(
         "access_token"
       )}`,
       {
@@ -18,8 +18,8 @@ export default function AllBlocks(AppProps: {
           "Content-Type": "application/json",
         },
       }
-    ).then((res) => console.log(res))
-    
+    )
+      .then((res) => console.log(res.json().items))
   }
 
   if (AppProps.type === "artists") {
