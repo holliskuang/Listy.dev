@@ -9,19 +9,22 @@ export default function TopBlock(AppProps: { type: any }) {
   }, [time]);
 
   async function getTop() {
-    const response = await fetch(
-      `https://api.spotify.com/v1/me/top/${AppProps.type}?limit=50&time_range=${time}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => setBlocks(data.items));
+    if (AppProps.type != "recentlyPlayed") {
+      const response = await fetch(
+        `https://api.spotify.com/v1/me/top/${AppProps.type}?limit=50&time_range=${time}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => setBlocks(data.items));
+    }
   }
+
   //artist - image , Name,Link , Genres ,
   // Song - image, Name, Link , Artist
 

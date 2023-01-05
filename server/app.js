@@ -170,5 +170,27 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
+app.get("/recently_played*", function (req, res) {
+  var access_token = req.query.access_token;
+  res.json(access_token);
+  res.end();
+  const date = new Date();
+  const time = date.getTime();
+  const urlHelper = `https://api.spotify.com/v1/me/player/recently-played#before=${time}`;
+  const authOptions = {
+    url: urlHelper,
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${access_token}`,
+    },
+    json: true,
+  };
+
+  req.get(authOptions, function (error, response, body) {
+    res.send(JSON.parse(body));
+  });
+});
+
 console.log("Listening on 8888");
 app.listen(8888);

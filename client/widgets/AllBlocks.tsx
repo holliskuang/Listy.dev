@@ -7,7 +7,20 @@ export default function AllBlocks(AppProps: {
 }) {
   const array = Object.entries(AppProps.data);
 
-
+  function getRecent() {
+    fetch(
+      `http://localhost:8888/recently_played/${localStorage.getItem(
+        "access_token"
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => console.log(res))
+    
+  }
 
   if (AppProps.type === "artists") {
     return (
@@ -29,7 +42,7 @@ export default function AllBlocks(AppProps: {
     );
 
     // Tracks List
-  } else
+  } else if (AppProps.type === "tracks") {
     return (
       <>
         {array.map((block: any) => (
@@ -46,4 +59,14 @@ export default function AllBlocks(AppProps: {
         <CreatePlaylist type={AppProps.type} data={array} />
       </>
     );
+  }
+  // recently played
+  else if (AppProps.type === "recentlyPlayed") {
+    return (
+      <>
+        <button onClick={() => getRecent()}>HELLO!</button>
+      </>
+    );
+  }
+  return <></>;
 }
