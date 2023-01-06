@@ -10,7 +10,6 @@ export default function FunText() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
         font: "Roboto, sans-serif",
       }}
     >

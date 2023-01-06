@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
-import Script from "next/script";
-import FunText from "../widgets/FunText";
-import Gradient2 from "../components/Gradient2";
+import Body from "../components/Body";
+import Header from "../components/Header";
+
+
+
 
 export default function Home() {
   const router = useRouter();
@@ -11,10 +13,10 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <Script src="../widgets/GradientController" />
-      <Gradient2 />
-      <FunText />
+    <div >
+      <Header></Header>
+      <Body></Body>
+     
       <button onClick={spotifyLogIn}>Hello</button>
     </div>
   );
