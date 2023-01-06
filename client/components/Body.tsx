@@ -1,14 +1,13 @@
 import FunText from "../widgets/FunText";
 
-
-export default function Body() {
+export default function Body(props) {
   return (
     <main role="main">
       <section className="ui-section-hero">
         <div className="ui-layout-container">
           {/*-- COPYWRITING -*/}
           <div className="ui-layout-column-6 ui-layout-column-center">
-          <FunText />
+            <FunText />
             <p className="ui-text-intro">
               Lorem ipsum dolor sit amet, consectetur lit, enimad eiusmod tempor
               incididunt ut labore et dolore magna aliqua ullamco laboris nisi.
@@ -16,12 +15,12 @@ export default function Body() {
             {/*-- CTA -*/}
             <div className="ui-component-cta ui-layout-flex">
               <a
-                href="#"
+                onClick={props.spotifyLogIn}
                 role="link"
                 aria-label="#"
                 className="ui-component-button ui-component-button-normal ui-component-button-primary"
               >
-                Add to Chrome &mdash; It&rsquo;s Free
+                Log In
               </a>
               <p className="ui-text-note">
                 <small>Firefox and Safari soon.</small>

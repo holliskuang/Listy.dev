@@ -2,9 +2,6 @@ import { useRouter } from "next/router";
 import Body from "../components/Body";
 import Header from "../components/Header";
 
-
-
-
 export default function Home() {
   const router = useRouter();
 
@@ -13,11 +10,9 @@ export default function Home() {
   }
 
   return (
-    <div >
+    <div>
       <Header></Header>
-      <Body></Body>
-     
-      <button onClick={spotifyLogIn}>Hello</button>
+      <Body spotifyLogIn={() => spotifyLogIn}></Body>
     </div>
   );
 }
