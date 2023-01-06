@@ -16,6 +16,12 @@
     "incremental": true,
     "useUnknownInCatchVariables": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/app.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/api/app.js",
+    "components/Gradient2.jsx"
+  ],
   "exclude": ["node_modules"]
 }
