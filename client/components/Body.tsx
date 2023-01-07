@@ -38,7 +38,7 @@ export default function Body(props: any) {
             </div>
             <div className="ui-component-cta ui-layout-flex">
               <a
-                onClick={props.spotifyLogIn}
+                onClick={props.spotifyLogIn()}
                 role="link"
                 aria-label="#"
                 className="ui-component-button ui-component-button-normal ui-component-button-primary"
