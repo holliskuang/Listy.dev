@@ -8,6 +8,7 @@ export default function topArtists() {
   return (
     <FlexBetween
       sx={{ flexDirection: "row", flexWrap: "wrap", alignItems: "flex-start" }}
+      className="topArtists"
     >
       <SideBar></SideBar>
       <TopBlock type="artists"></TopBlock>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AllBlocks from "../widgets/AllBlocks";
+import Header from "../components/MainHeader";
 
 export default function TopBlock(AppProps: { type: any }) {
   const [time, setTime] = useState("long_term");
@@ -44,6 +45,7 @@ export default function TopBlock(AppProps: { type: any }) {
   }
   return (
     <div>
+      <Header></Header>
       {AppProps.type != "recentlyPlayed" && (
         <>
           <button onClick={() => setTime("long_term")}>All time</button>

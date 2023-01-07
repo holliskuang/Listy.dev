@@ -144,7 +144,7 @@ html {
 body {
   background-color: var(--ui-color-background-primary);
   color: var(--ui-color-typography-body);
-  font-family: var(--ui-typography-typeface);
+  font-family: "Circular Spotify Tx T Bold";
   font-feature-settings: "liga", "kern";
   font-size: var(--ui-typography-p);
   font-weight: 400;
@@ -462,6 +462,7 @@ a {
   -moz-osx-font-smoothing: grayscale;
   transition-duration: 0.3s;
   transition-property: transform;
+  border-radius: 10px;
 }
 
 .hvr-grow:hover,
@@ -482,4 +483,17 @@ a {
 
 .ui-section-header__layout {
   margin-top: 30px;
+}
+
+.topArtists{
+  background-color:  #ffdee9;
+}
+
+.topTracks{
+  background-color: #def6ff;
+}
+
+.recentlyPlayed{
+  background-color: #fffbde;
+  //#b9b9ff;
 }

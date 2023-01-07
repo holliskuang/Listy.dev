@@ -43,6 +43,7 @@ export default function Body(props: any) {
                 aria-label="#"
                 className="ui-component-button ui-component-button-normal ui-component-button-primary"
                 color="#1DB954"
+                
               >
                 Sign In with Spotify
               </a>
