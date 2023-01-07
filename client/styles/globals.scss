@@ -230,8 +230,8 @@ svg {
 --------------------------------------------------------------*/
 
 .ui-layout-container {
-  padding-left: var(--ui-layout-container);
-  padding-right: var(--ui-layout-container);
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .ui-layout-flex,
@@ -248,20 +248,6 @@ svg {
   display: grid;
 }
 
-/*--------------------------------------------------------------
-6.0 COMPONENT
---------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-|
-| 6.1 CTA
-|
---------------------------------------------------------------*/
-
-.ui-component-cta {
-  flex-direction: column;
-  row-gap: var(--ui-gap-cta);
-}
 
 /*--------------------------------------------------------------
 |
@@ -275,6 +261,7 @@ svg {
   font-weight: 100;
   line-height: 1;
   text-align: center;
+  box-shadow: 1px 1px 1px gray;
 }
 
 .ui-component-button-primary {
@@ -316,9 +303,6 @@ svg {
   text-align: center;
 }
 
-.ui-section-hero--image {
-  margin-top: var(--ui-gap-hero);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -376,34 +360,8 @@ svg {
     --ui-gap-hero: 3rem;
   }
 
-  /*------------------------------------------------------------
-   IMAGE
-   ------------------------------------------------------------*/
-
-  .ui-image-half-left {
-    padding-right: var(--ui-layout-gutter);
-  }
-
-  .ui-image-half-right {
-    padding-left: var(--ui-layout-gutter);
-  }
-
-  /*------------------------------------------------------------
-   LAYOUT
-   ------------------------------------------------------------*/
-
-  .ui-layout-container,
-  .ui-layout-column-center {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .ui-layout-grid-2,
-  .ui-layout-grid-3 {
-    column-gap: var(--ui-layout-gutter);
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-  }
+  
+  
 
   /*------------------------------------------------------------
    COMPONENT
@@ -470,4 +428,32 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.imageHolder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  margin: 20px 100px;
+  padding: 40px 20px;
+  
+}
+
+.hvr-grow {
+
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
 }
