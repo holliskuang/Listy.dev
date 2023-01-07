@@ -468,3 +468,17 @@ a {
 .hvr-grow:active {
   transform: scale(1.1);
 }
+
+
+.ui-layout-container-sidebar{
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ui-section-header__layout {
+  margin-top: 30px;
+}
