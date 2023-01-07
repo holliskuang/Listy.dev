@@ -6,11 +6,12 @@ export default function FunText() {
       className="typingContainer"
       sx={{
         color: "black",
-        fontSize: "42px",
+        fontSize: "50px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        font: "Roboto, sans-serif",
+        fontFamily: "Circular Spotify Tx T Bold"
+
       }}
     >
       <Box className="sentence" sx={{ p:"12px"}}> Create Playlists from your</Box>

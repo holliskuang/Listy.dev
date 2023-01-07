@@ -1,3 +1,20 @@
+@import url(//db.onlinewebfonts.com/c/112ec584bfc481ccde03444e67f8fc3f?family=Circular+Spotify+Tx+T+Bold);
+
+@font-face {
+  font-family: "Circular Spotify Tx T Bold";
+  src: url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.eot");
+  src: url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.svg#Circular Spotify Tx T Bold")
+      format("svg");
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -39,7 +56,7 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
- /*------------------------------------------------------------
+  /*------------------------------------------------------------
   |
   | 1.1 COLOR
   |
@@ -56,18 +73,12 @@
   --ui-color-n-500: #353535;
   --ui-color-n-900: #1a1a1a;
 
-  /* BACKGROUND COLOR */
-  
-  --ui-color-background-primary  : var(--ui-color-n-000);
-  --ui-color-background-secondary: var(--ui-color-n-050);
-  --ui-color-background-tertiary : var(--ui-color-n-025);
-
   /* TYPOGRAPHY COLOR */
 
   --ui-color-typography-heading: var(--ui-color-n-500);
-  --ui-color-typography-body   : var(--ui-color-n-900);
-  --ui-color-typography-note   : var(--ui-color-n-300);
-  --ui-color-typography-button : var(--ui-color-n-000);
+  --ui-color-typography-body: var(--ui-color-n-900);
+  --ui-color-typography-note: var(--ui-color-n-300);
+  --ui-color-typography-button: var(--ui-color-n-000);
 
   /*------------------------------------------------------------
   |
@@ -81,54 +92,54 @@
 
   --ui-typography-h1: 1.9375rem;
   --ui-typography-h2: 1.5625rem;
-  --ui-typography-p : 1rem;
-  --ui-typography-s : .8125rem;
+  --ui-typography-p: 1rem;
+  --ui-typography-s: 0.8125rem;
 
   /* LEADING */
 
   --ui-typography-h1-leading: 1.2;
   --ui-typography-h2-leading: 1.2;
-  --ui-typography-p-leading : 1.5;
+  --ui-typography-p-leading: 1.5;
 
   /* MARGIN */
 
-  --ui-typography-margin-heading: .75rem;
-  --ui-typography-margin-body   : 1.125rem;
+  --ui-typography-margin-heading: 0.75rem;
+  --ui-typography-margin-body: 1.125rem;
 
   /*------------------------------------------------------------
   |
   | 1.3 LAYOUT
   |
   ------------------------------------------------------------*/
-  
+
   --ui-layout-container: 1.25rem;
-  --ui-layout-grid     : 3.625rem;
-  --ui-layout-gutter   : 1rem;
+  --ui-layout-grid: 3.625rem;
+  --ui-layout-gutter: 1rem;
 
   /* GAP */
-  
-  --ui-gap-cta        : .75rem;
-  --ui-gap-hero       : 2rem;
-  --ui-gap-customer   : 2rem;
-  --ui-gap-feature    : 2rem;
-  --ui-gap-testimonial: 2rem;
+
+  --ui-gap-cta: 0.75rem;
+  --ui-gap-hero: 2rem;
 
   /* BORDER RADIUS */
-  
+
   --ui-radius-avatar: 5rem;
   --ui-radius-button: 5rem;
-
 }
 
 /*--------------------------------------------------------------
 2.0 FOUNDATION
 --------------------------------------------------------------*/
 
-html { box-sizing: border-box; }
+html {
+  box-sizing: border-box;
+}
 
 *,
 *:before,
-*:after { box-sizing: inherit; }
+*:after {
+  box-sizing: inherit;
+}
 
 body {
   background-color: var(--ui-color-background-primary);
@@ -155,7 +166,9 @@ a {
 h1,
 h2,
 p,
-ul { margin-top: 0; }
+ul {
+  margin-top: 0;
+}
 
 h1,
 h2 {
@@ -174,16 +187,26 @@ h2 {
 }
 
 p,
-ul { margin-bottom: var(--ui-typography-margin-body); }
+ul {
+  margin-bottom: var(--ui-typography-margin-body);
+}
 
 p:last-child,
-ul:last-child { margin-bottom: 0; }
+ul:last-child {
+  margin-bottom: 0;
+}
 
-ul { padding-left: 0; }
+ul {
+  padding-left: 0;
+}
 
-strong { font-weight: 700; }
+strong {
+  font-weight: 700;
+}
 
-small { font-size: var(--ui-typography-s); }
+small {
+  font-size: var(--ui-typography-s);
+}
 
 .ui-text-note {
   color: var(--ui-color-typography-note);
@@ -217,9 +240,13 @@ svg {
   justify-content: center;
 }
 
-.ui-layout-flex { display: flex; }
+.ui-layout-flex {
+  display: flex;
+}
 
-.ui-layout-grid { display: grid; }
+.ui-layout-grid {
+  display: grid;
+}
 
 /*--------------------------------------------------------------
 6.0 COMPONENT
@@ -243,55 +270,24 @@ svg {
 --------------------------------------------------------------*/
 
 .ui-component-button {
-  border: .0625rem solid var(--ui-color-brand);
   border-radius: var(--ui-radius-button);
   display: block;
-  font-weight: 700;
+  font-weight: 100;
   line-height: 1;
   text-align: center;
 }
 
 .ui-component-button-primary {
-  background-color: var(--ui-color-brand);
+  background-color: #1db954;
   color: var(--ui-color-typography-button);
+  font-family: "Circular Spotify Tx T Bold";
+  font-size: 20px;
+  text-shadow: 1px 1px 1px pink;
 }
-
 .ui-component-button-normal {
-  padding: .75rem 1rem .875rem;
+  padding: 1.75rem 2rem 1.75rem;
   width: fit-content;
 }
-
-.ui-component-button-small {
-  font-size: var(--ui-typography-s);
-  padding: .5rem .75rem .5625rem;
-}
-
-/*--------------------------------------------------------------
-|
-| 6.3 LIST
-|
---------------------------------------------------------------*/
-
-.ui-component-list {
-  grid-template-columns: 1fr;
-  row-gap: .75rem;
-}
-
-.ui-component-list--item {
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 1.125rem;
-  list-style: none;
-  padding-left: 1.875rem;
-}
-
-.ui-component-list--item-check {
-  background-image: url(https://res.cloudinary.com/uisual/image/upload/assets/icons/check.svg);
-}
-
-/*--------------------------------------------------------------
-7.0 SECTION
---------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
 |
@@ -304,7 +300,9 @@ svg {
   padding-top: 1.25rem;
 }
 
-.ui-section-header__layout { justify-content: space-between; }
+.ui-section-header__layout {
+  justify-content: space-between;
+}
 
 /*--------------------------------------------------------------
 |
@@ -318,9 +316,9 @@ svg {
   text-align: center;
 }
 
-.ui-section-hero--image { margin-top: var(--ui-gap-hero); }
-  
-
+.ui-section-hero--image {
+  margin-top: var(--ui-gap-hero);
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -353,106 +351,90 @@ svg {
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
 
-     /* FONT SIZE */
+    /* FONT SIZE */
 
-     --ui-typography-h1: 2.1875rem;
-     --ui-typography-h2: 1.75rem;
-     --ui-typography-p : 1.125rem;
-     --ui-typography-s : .875rem;
- 
-     /* MARGIN */
- 
-     --ui-typography-margin-body: 1.25rem;
- 
-     /*----------------------------------------------------------
+    --ui-typography-h1: 2.1875rem;
+    --ui-typography-h2: 1.75rem;
+    --ui-typography-p: 1.125rem;
+    --ui-typography-s: 0.875rem;
+
+    /* MARGIN */
+
+    --ui-typography-margin-body: 1.25rem;
+
+    /*----------------------------------------------------------
      |
      | LAYOUT
      |
      ----------------------------------------------------------*/
- 
-     --ui-layout-container: 4.25rem;
-     --ui-layout-gutter   : 1.5rem;
- 
-     /* GAP */
- 
-     --ui-gap-hero       : 3rem;
-     --ui-gap-feature    : 3rem;
-     --ui-gap-testimonial: 3rem;
- 
-   }
- 
-   /*------------------------------------------------------------
+
+    --ui-layout-container: 4.25rem;
+    --ui-layout-gutter: 1.5rem;
+
+    /* GAP */
+
+    --ui-gap-hero: 3rem;
+  }
+
+  /*------------------------------------------------------------
    IMAGE
    ------------------------------------------------------------*/
- 
-   .ui-image-half-left {
-     padding-right: var(--ui-layout-gutter);
-   }
- 
-   .ui-image-half-right {
-     padding-left: var(--ui-layout-gutter);
-   }
- 
-   /*------------------------------------------------------------
+
+  .ui-image-half-left {
+    padding-right: var(--ui-layout-gutter);
+  }
+
+  .ui-image-half-right {
+    padding-left: var(--ui-layout-gutter);
+  }
+
+  /*------------------------------------------------------------
    LAYOUT
    ------------------------------------------------------------*/
- 
-   .ui-layout-container,
-   .ui-layout-column-center {
-     margin-left: auto;
-     margin-right: auto;
-   }
- 
-   .ui-layout-grid-2,
-   .ui-layout-grid-3 {
-     column-gap: var(--ui-layout-gutter);
-     grid-template-columns: repeat(2, 1fr);
-     justify-items: center;
-   }
- 
-   .ui-layout-column-4 {
-     width: calc((var(--ui-layout-grid) * 4) +
-            (var(--ui-layout-gutter) * 3));
-   }
- 
-   .ui-layout-column-6 {
-     width: calc((var(--ui-layout-grid) * 6) +
-            (var(--ui-layout-gutter) * 5));
-   }
- 
-   /*------------------------------------------------------------
+
+  .ui-layout-container,
+  .ui-layout-column-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ui-layout-grid-2,
+  .ui-layout-grid-3 {
+    column-gap: var(--ui-layout-gutter);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  /*------------------------------------------------------------
    COMPONENT
    ------------------------------------------------------------*/
- 
-   /*------------------------------------------------------------
+
+  /*------------------------------------------------------------
    |
    | LIST
    |
    ------------------------------------------------------------*/
- 
-   .ui-component-list--item {
-     background-size: 1.25rem;
-     padding-left: 2rem;
-   }
- 
-   /*------------------------------------------------------------
+
+  .ui-component-list--item {
+    background-size: 1.25rem;
+    padding-left: 2rem;
+  }
+
+  /*------------------------------------------------------------
    SECTION
    ------------------------------------------------------------*/
- 
-   /*------------------------------------------------------------
+
+  /*------------------------------------------------------------
    |
    | HEADER
    |
    ------------------------------------------------------------*/
- 
-   .ui-section-header {
-     padding-bottom: 2rem;
-     padding-top: 2rem;
-   }
- 
-  }
-  
 
+  .ui-section-header {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -462,15 +444,21 @@ svg {
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+#full-size {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* or overflow:auto; if you want scrollbars */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #FFDEE9;
-  background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
-  
+  background-color: #ffdee9;
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
 }
 
 a {
@@ -483,4 +471,3 @@ a {
     color-scheme: dark;
   }
 }
-

@@ -1,6 +1,6 @@
 import FunText from "../widgets/FunText";
 
-export default function Body(props) {
+export default function Body(props: any) {
   return (
     <main role="main">
       <section className="ui-section-hero">
@@ -8,10 +8,7 @@ export default function Body(props) {
           {/*-- COPYWRITING -*/}
           <div className="ui-layout-column-6 ui-layout-column-center">
             <FunText />
-            <p className="ui-text-intro">
-              Lorem ipsum dolor sit amet, consectetur lit, enimad eiusmod tempor
-              incididunt ut labore et dolore magna aliqua ullamco laboris nisi.
-            </p>
+           
             {/*-- CTA -*/}
             <div className="ui-component-cta ui-layout-flex">
               <a
@@ -19,21 +16,13 @@ export default function Body(props) {
                 role="link"
                 aria-label="#"
                 className="ui-component-button ui-component-button-normal ui-component-button-primary"
+                color="#1DB954"
               >
-                Log In
+                Sign In with Spotify
               </a>
-              <p className="ui-text-note">
-                <small>Firefox and Safari soon.</small>
-              </p>
             </div>
           </div>
           {/*-- IMAGE -*/}
-          <img
-            src="https://res.cloudinary.com/uisual/image/upload/assets/devices/ipad.png"
-            loading="lazy"
-            alt="#"
-            className="ui-section-hero--image"
-          />
         </div>
       </section>
     </main>
