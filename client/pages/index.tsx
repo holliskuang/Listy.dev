@@ -10,7 +10,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="indexBody">
       <Header></Header>
       <Body spotifyLogIn={() => spotifyLogIn}></Body>
     </div>
