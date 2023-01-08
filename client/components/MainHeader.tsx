@@ -13,6 +13,10 @@ export default function Header(AppProps: any) {
             <div className="dots">&#xFE19;</div>
           </p>
         </div>
+
+        <div className="threeLines">
+          <img src="https://res.cloudinary.com/dd97ovnmi/image/upload/v1673171846/output-onlinepngtools_vqtnph.png" />
+        </div>
         <div className="pictureAndDoodles">
           <div className="clouds">
             <img src="https://res.cloudinary.com/dd97ovnmi/image/upload/v1673171605/pngwing.com_makokv.png" />
