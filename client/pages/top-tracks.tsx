@@ -8,7 +8,7 @@ export default function topTracks() {
       className="topTracks"
     >
       <SideBar></SideBar>
-      <TopBlock type="tracks"></TopBlock>
+      <TopBlock type="tracks" ></TopBlock>
     </FlexBetween>
   );
 }

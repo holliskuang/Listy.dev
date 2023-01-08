@@ -1,6 +1,7 @@
+import SnackBar from "../widgets/SnackBar";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import RecentlyPlayed from "./recently_played";
+import TopTracks from "./top-tracks";
 export default function CallBack() {
   const router = useRouter();
   useEffect(getCode, []);
@@ -21,7 +22,14 @@ export default function CallBack() {
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("refresh_token", refresh_token);
     localStorage.setItem("id", id);
+    router.push("/top-tracks");
   }
 
-  return <RecentlyPlayed></RecentlyPlayed>;
+  return (
+    <div className="callback">
+      <div className="lds-circle">
+        <div></div>
+      </div>
+    </div>
+  );
 }

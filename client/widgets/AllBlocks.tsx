@@ -5,6 +5,7 @@ export default function AllBlocks(AppProps: {
   data: { [s: string]: unknown } | ArrayLike<unknown>;
   type: string;
 }) {
+  console.log(AppProps.data);
   const array = Object.entries(AppProps.data);
 
   if (AppProps.type === "artists") {

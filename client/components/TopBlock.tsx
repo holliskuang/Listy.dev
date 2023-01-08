@@ -44,7 +44,7 @@ export default function TopBlock(AppProps: { type: any }) {
     //Recently Played - image, Name, Link, Artist, Time
   }
   return (
-    <div>
+    <div className="topBlocks">
       <Header></Header>
       {AppProps.type != "recentlyPlayed" && (
         <>
