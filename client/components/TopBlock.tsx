@@ -9,7 +9,7 @@ export default function TopBlock(AppProps: { type: any }) {
   useEffect(() => {
     getTop();
   }, [time]);
-
+  
   async function getTop() {
     if (AppProps.type != "recentlyPlayed") {
       const response = await fetch(
@@ -44,20 +44,25 @@ export default function TopBlock(AppProps: { type: any }) {
     // Song - image, Name, Link , Artist
     //Recently Played - image, Name, Link, Artist, Time
   }
+
   return (
     <div className="topBlocks">
       <Header></Header>
       <div className="songListAndButtons">
         {AppProps.type != "recentlyPlayed" && (
           <div className="timeButtons">
-            <Button variant="text" onClick={() => setTime("long_term")} sx={{
-              color:"#aba5c3",
-              fontFamily: "Rubik, sans-serif",
-              fontSize: "20px",
-              fontWeight: "400",
-              background: "transparent",
-              fontSmooth: "antialiased",
-            }}>
+            <Button
+              variant="text"
+              onClick={() => setTime("long_term")}
+              sx={{
+                color: "#aba5c3",
+                fontFamily: "Rubik, sans-serif",
+                fontSize: "20px",
+                fontWeight: "1000",
+                background: "transparent",
+                fontSmooth: "antialiased",
+              }}
+            >
               All time
             </Button>
             <Button variant="text" onClick={() => setTime("medium_term")}>

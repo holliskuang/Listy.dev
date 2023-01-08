@@ -4,7 +4,7 @@ export default function Body(props: any) {
   return (
     <main role="main">
       <section className="ui-section-hero">
-        <div className="ui-layout-container">
+        <div className="landing-ui-layout-container">
           {/*-- COPYWRITING -*/}
           <div className="ui-layout-column-6 ui-layout-column-center">
             <FunText />

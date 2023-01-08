@@ -1,8 +1,8 @@
 export default function Header() {
   return (
-    <header role="banner" className="ui-section-header">
-      <div className="ui-layout-container">
-        <div className="ui-section-header__layout ui-layout-flex">
+    <header role="banner" className="ui-section-header-landing">
+  
+        <div className="landing_top_logo">
           {/*<-- LOGO -->*/}
 
           <a href="#" role="link" aria-label="#">
@@ -11,7 +11,7 @@ export default function Header() {
           {/*<!-- MENU --> */}
        
         </div>
-      </div>
+
     </header>
   );
 }
