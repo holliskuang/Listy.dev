@@ -228,10 +228,13 @@ svg {
 /*--------------------------------------------------------------
 5.0 LAYOUT
 --------------------------------------------------------------*/
+.ui-layout-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
-.ui-layout-container {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  align-items: center;
+ 
 }
 
 .ui-layout-flex,
@@ -480,6 +483,7 @@ a {
 .ui-section-header__layout {
   margin-top: 10px;
   font-size: 35px;
+  width: 100%;
 }
 
 .topArtists {
@@ -492,8 +496,6 @@ a {
 
 .mainHeaderPictureTopTracks {
   border: black solid 3px;
-  margin-right: 180px;
-  margin-left: 180px;
   box-shadow: 10px 10px  black;
  width: 400px;
  height: 400px;
@@ -502,10 +504,11 @@ a {
 .mainHeaderTopLine{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content:  space-between;
   align-items: baseline;
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 70%;
 }
 .arrowBox{
   width: 40px;
@@ -565,6 +568,22 @@ a {
   width: 100%;
   margin-bottom: 20px;
 
+}
+
+.pictureAndDoodles{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.scribbleLine{
+  width: 100px;
+  height: 100px;
+}
+.clouds{
+  width: 100px;
+  height: 100px;
 }
 
 .callback {
