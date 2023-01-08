@@ -571,22 +571,23 @@ a {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   margin-bottom: 20px;
 }
 .scribbleLine {
   margin-top: 300px;
   width: 100px;
   height: 100px;
-  margin-left: 40px;
+  margin-right: 40px;
 
 }
 .clouds {
   width: 100px;
   height: 100px;
   margin-top: 30px;
-  margin-right: 10px;
+  margin-left: 40px;
 }
+
 
 .callback {
   background-color: #def6ff;

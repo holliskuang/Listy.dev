@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AllBlocks from "../widgets/AllBlocks";
 import Header from "../components/MainHeader";
+import { Button } from "@mui/material";
 
 export default function TopBlock(AppProps: { type: any }) {
   const [time, setTime] = useState("long_term");
@@ -46,14 +47,29 @@ export default function TopBlock(AppProps: { type: any }) {
   return (
     <div className="topBlocks">
       <Header></Header>
-      {AppProps.type != "recentlyPlayed" && (
-        <>
-          <button onClick={() => setTime("long_term")}>All time</button>
-          <button onClick={() => setTime("medium_term")}>Last 6 months</button>
-          <button onClick={() => setTime("short_term")}>Last month</button>
-        </>
-      )}
-      <AllBlocks data={blocks} type={AppProps.type} />
+      <div className="songListAndButtons">
+        {AppProps.type != "recentlyPlayed" && (
+          <div className="timeButtons">
+            <Button variant="text" onClick={() => setTime("long_term")} sx={{
+              color:"#aba5c3",
+              fontFamily: "Rubik, sans-serif",
+              fontSize: "20px",
+              fontWeight: "400",
+              background: "transparent",
+              fontSmooth: "antialiased",
+            }}>
+              All time
+            </Button>
+            <Button variant="text" onClick={() => setTime("medium_term")}>
+              Last 6 months
+            </Button>
+            <Button variant="text" onClick={() => setTime("short_term")}>
+              Last month
+            </Button>
+          </div>
+        )}
+        <AllBlocks data={blocks} type={AppProps.type} />
+      </div>
     </div>
   );
 }

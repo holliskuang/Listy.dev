@@ -11,6 +11,7 @@ export default function AllBlocks(AppProps: {
   if (AppProps.type === "artists") {
     return (
       <>
+      
         {array.map((block: any) => (
           <IndividualBlock
             number={parseInt(block[0]) + 1}
