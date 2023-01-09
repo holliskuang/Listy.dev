@@ -22,7 +22,7 @@ export default function CallBack() {
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("refresh_token", refresh_token);
     localStorage.setItem("id", id);
-    router.push("/top-tracks");
+    router.push("/top-tracks/");
   }
 
   return (
@@ -30,6 +30,7 @@ export default function CallBack() {
       <div className="lds-circle">
         <div></div>
       </div>
+      <SnackBar></SnackBar>
     </div>
   );
 }

@@ -652,3 +652,39 @@ a {
 .topTracks {
   width: 100%;
 }
+
+
+.timeButtonSelector {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  margin: -1em -0.75em 1em;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto; }
+  .timeButtonSelector .time-option {
+    color: #aba5c3;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    padding: 1em;
+    display: inline-block;
+    position: relative; }
+    .timeButtonSelector .time-option:active {
+      color: #50496d; }
+  .timeButtonSelector .time--active {
+    color: #50496d; }
+    .timeButtonSelector .time--active:after {
+      position: absolute;
+      left: 1em;
+      right: 1em;
+      bottom: 0.6em;
+      content: '';
+      display: block;
+      height: 2px;
+      background: #50496d;
+      transform: scaleX(0);
+      animation: scaleX-in 0.2s;
+      animation-fill-mode: forwards; }
