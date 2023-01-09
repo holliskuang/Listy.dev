@@ -27,6 +27,9 @@ export default function SideBar() {
           justifyContent: "space-Between",
         }}
       >
+        {/*https://res.cloudinary.com/dd97ovnmi/image/upload/v1673254845/microphone_kobhxr.png
+        https://res.cloudinary.com/dd97ovnmi/image/upload/v1673254845/clock_dlnmhg.png
+      https://res.cloudinary.com/dd97ovnmi/image/upload/v1673254845/music_bgxg2f.png*/}
         <button onClick={() => router.push("/top-tracks")}> Top Tracks</button>
         <button onClick={() => router.push("/top-artists")}>
           {" "}
