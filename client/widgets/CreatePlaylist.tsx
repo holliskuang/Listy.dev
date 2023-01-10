@@ -2,6 +2,7 @@ import FlexBetween from "./FlexBetween";
 import FormDialog from "./FormDialog";
 import { useState, useEffect } from "react";
 import AlertDialog from "./AlertDialog";
+import classNames from "classnames";
 
 export default function CreatePlaylist(props: {
   type: string;
@@ -12,6 +13,7 @@ export default function CreatePlaylist(props: {
   const [popup, setPopup] = useState(false);
   const [playlistURL, setPlaylistURL] = useState("");
   const [playlistImage, setPlaylistImage] = useState("");
+  const [scrollTop, setScrollTop] = useState(true);
   // Isolate Track URIs for Top Tracks
   const trackURI = props.data.map((block: any) => block[1].uri);
   console.log(trackURI);
@@ -22,6 +24,13 @@ export default function CreatePlaylist(props: {
       setPlaylistTitle(null);
     }
   });
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollWatcher);
+    return () => {
+      window.removeEventListener("scroll", scrollWatcher);
+    };
+  }, []);
 
   // create popup when url and image state is updated
   useEffect(() => {
@@ -80,7 +89,9 @@ export default function CreatePlaylist(props: {
       },
       body: JSON.stringify({
         name: `${playlistTitle}`,
-        description: `Your top ${props.type!==`recentlyPlayed`? props.type: "recent plays"} on Spotify!`,
+        description: `Your top ${
+          props.type !== `recentlyPlayed` ? props.type : "recent plays"
+        } on Spotify!`,
       }),
     })
       .then((response) => response.json())
@@ -91,13 +102,10 @@ export default function CreatePlaylist(props: {
           // playlist from top artists
         } else if (props.type === "artists") {
           addToPlaylist(data.id);
-        }
-        else if (props.type==="recentlyPlayed"){
+        } else if (props.type === "recentlyPlayed") {
           addToPlaylist(data.id);
         }
       });
-
- 
 
     // add tracks to playlist
     async function addToPlaylist(id: string) {
@@ -125,9 +133,10 @@ export default function CreatePlaylist(props: {
             body: JSON.stringify({ uris: tracks }),
           });
         });
-      }
-      else if (props.type==="recentlyPlayed"){
-        const recentPlayedURI = props.data.map((block: any) => block[1].track.uri)
+      } else if (props.type === "recentlyPlayed") {
+        const recentPlayedURI = props.data.map(
+          (block: any) => block[1].track.uri
+        );
         await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
           method: "POST",
           headers: {
@@ -138,7 +147,6 @@ export default function CreatePlaylist(props: {
         });
       }
 
-
       console.log("done");
 
       setTimeout(() => {
@@ -147,24 +155,35 @@ export default function CreatePlaylist(props: {
     }
   }
 
-     async function createPopup(playlistId: string) {
-      await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setPlaylistImage(data.images[1].url);
-          setPlaylistURL(data.external_urls.spotify);
-        });
+  async function createPopup(playlistId: string) {
+    await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setPlaylistImage(data.images[1].url);
+        setPlaylistURL(data.external_urls.spotify);
+      });
+  }
+
+  function scrollWatcher() {
+    if (window.pageYOffset > 0) {
+      setScrollTop(false);
+    } else if (window.pageYOffset === 0) {
+      setScrollTop(true);
     }
+  }
 
   return (
     <FlexBetween
+      className={classNames("action-buttons", {
+        "action-buttons--scrolled": !scrollTop,
+      })}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -173,21 +192,25 @@ export default function CreatePlaylist(props: {
         ...props.sx,
       }}
     >
-      <FlexBetween width="100%" sx={{ justifyContent: "center" }}>
-        Create Your Top {props.type} Playlist
-      </FlexBetween>
-      {props.type !== "recentlyPlayed" ? (
-        <FlexBetween>
-          This creates a playlist from your Top-50 {props.type}{" "}
-          {props.type == "artists" &&
-            `with a
+      <FlexBetween
+        width="100%"
+        sx={{ justifyContent: "center" }}
+        className="action-buttons__info"
+      >
+        Create Your Top {props.type==="tracks" && ("Tracks") || props.type==="artists" && ("Artists") || props.type==="recentlyPlayed" && ("Recent Hits")} Playlist!
+        {props.type !== "recentlyPlayed" ? (
+          <FlexBetween>
+            This creates a playlist from your Top-50 {props.type}{" "}
+            {props.type == "artists" &&
+              `with a
           track from each artist.`}
-        </FlexBetween>
-      ) : (
-        <FlexBetween>
-          This creates a playlist from your 50 most recently played tracks!
-        </FlexBetween>
-      )}
+          </FlexBetween>
+        ) : (
+          <FlexBetween>
+            This creates a playlist from your 50 most recently played tracks!
+          </FlexBetween>
+        )}
+      </FlexBetween>
       <FormDialog
         type={props.type}
         data={props.data}
