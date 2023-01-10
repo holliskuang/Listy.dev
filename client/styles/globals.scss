@@ -21,7 +21,6 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -485,7 +484,6 @@ a {
   margin-top: 10px;
   font-size: 35px;
   width: 100%;
-  
 }
 
 .mainHeaderPictureTopTracks {
@@ -876,15 +874,11 @@ a {
   margin: 2.5em 0 0;
   text-align: center;
   color: #aba5c3;
-  font-size: 0.8em; }
-  .action-buttons .btn {
-    margin-top: 1em; }
-
-.action-buttons__title {
-  color: #50496d;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-  font-size: 1.2em; }
+  font-size: 0.8em;
+}
+.action-buttons .btn {
+  margin-top: 1em;
+}
 
 @media (min-width: 1200px) {
   .action-buttons {
@@ -906,18 +900,28 @@ a {
     transform: translate3d(0, 100%, 0);
     transition: all 0.3s cubic-bezier(0.87, 0.38, 0.27, 0.95);
     display: flex;
-    align-items: center;
+    flex-direction: row;
+  }
+  .action-buttons.action-buttons--scrolled {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  .action-buttons .action-buttons__info {
+    display: flex;
     flex-direction: column;
-    justify-content:center }
-    .action-buttons.action-buttons--scrolled {
-      opacity: 1;
-      transform: translate3d(0, 0, 0); }
-    .action-buttons .action-buttons__info {
-      text-align: left;
-      flex: 2; }
-    .action-buttons .action-buttons__button {
-      flex: 2;
-      text-align: right; }
-      .action-buttons .action-buttons__button .btn {
-        margin: 0;
-        float: right; } }
+    text-align: left;
+    flex: 2;
+  }
+}
+.scrollTitle {
+  font-size: 20px;
+  color: #50496d;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  font-size: 1.4em;
+  margin-left: 10px;
+}
+
+.extra_box {
+  height: 80px;
+}

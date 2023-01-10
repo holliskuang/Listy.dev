@@ -36,7 +36,7 @@ export default function FormDialog(AppProps: {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button className="scrollButton" variant="outlined" onClick={handleClickOpen}>
         Create Your Playlist
       </Button>
       <Dialog open={open} onClose={handleClose}>

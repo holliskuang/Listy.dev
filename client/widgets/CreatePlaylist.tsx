@@ -180,45 +180,54 @@ export default function CreatePlaylist(props: {
   }
 
   return (
-    <FlexBetween
-      className={classNames("action-buttons", {
-        "action-buttons--scrolled": !scrollTop,
-      })}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        ...props.sx,
-      }}
-    >
+    <div>
       <FlexBetween
-        width="100%"
-        sx={{ justifyContent: "center" }}
-        className="action-buttons__info"
+        className={classNames("action-buttons", {
+          "action-buttons--scrolled": !scrollTop,
+        })}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          ...props.sx,
+        }}
       >
-        Create Your Top {props.type==="tracks" && ("Tracks") || props.type==="artists" && ("Artists") || props.type==="recentlyPlayed" && ("Recent Hits")} Playlist!
-        {props.type !== "recentlyPlayed" ? (
-          <FlexBetween>
-            This creates a playlist from your Top-50 {props.type}{" "}
-            {props.type == "artists" &&
-              `with a
+        <FlexBetween
+          width="100%"
+          sx={{ justifyContent: "center" }}
+          className="action-buttons__info"
+        >
+          <FlexBetween className="scrollTitle">
+            Create Your Top{" "}
+            {(props.type === "tracks" && "Tracks") ||
+              (props.type === "artists" && "Artists") ||
+              (props.type === "recentlyPlayed" && "Recent Hits")}{" "}
+            Playlist!
+          </FlexBetween>
+          {props.type !== "recentlyPlayed" ? (
+            <FlexBetween>
+              This creates a playlist from your Top-50 {props.type}{" "}
+              {props.type == "artists" &&
+                `with a
           track from each artist.`}
-          </FlexBetween>
-        ) : (
-          <FlexBetween>
-            This creates a playlist from your 50 most recently played tracks!
-          </FlexBetween>
+            </FlexBetween>
+          ) : (
+            <FlexBetween>
+              This creates a playlist from your 50 most recently played tracks!
+            </FlexBetween>
+          )}
+        </FlexBetween>
+        <FormDialog
+          type={props.type}
+          data={props.data}
+          setPlaylistTitle={setPlaylistTitle}
+        ></FormDialog>
+        {popup && (
+          <AlertDialog url={playlistURL} img={playlistImage}></AlertDialog>
         )}
       </FlexBetween>
-      <FormDialog
-        type={props.type}
-        data={props.data}
-        setPlaylistTitle={setPlaylistTitle}
-      ></FormDialog>
-      {popup && (
-        <AlertDialog url={playlistURL} img={playlistImage}></AlertDialog>
-      )}
-    </FlexBetween>
+      <div className="extra_box"></div>
+    </div>
   );
 }
