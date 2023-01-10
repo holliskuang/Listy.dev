@@ -10,6 +10,40 @@ export default function TopBlock(AppProps: { type: any }) {
     getTop();
   }, [time]);
 
+  const renderBlocks = () => {
+    if (AppProps.type === "recentlyPlayed") {
+      return (
+        <div className="topBlocksRecentlyPlayed">
+          <Header type={AppProps.type}></Header>
+          <div className="songListAndButtons">
+            <AllBlocks data={blocks} type={AppProps.type} />
+          </div>
+        </div>
+      );
+    } else if (AppProps.type === "artists") {
+      return (
+        <div className="topBlocksArtists">
+          <Header type={AppProps.type}></Header>
+          <div className="songListAndButtons">
+            <TimeButtons select={time} onSelect={setTime} />
+
+            <AllBlocks data={blocks} type={AppProps.type} />
+          </div>
+        </div>
+      );
+    } else if (AppProps.type === "tracks") {
+      return (
+        <div className="topBlocksTracks">
+          <Header type={AppProps.type}></Header>
+          <div className="songListAndButtons">
+            <TimeButtons select={time} onSelect={setTime} />
+
+            <AllBlocks data={blocks} type={AppProps.type} />
+          </div>
+        </div>
+      );
+    }
+  };
   async function getTop() {
     if (AppProps.type != "recentlyPlayed") {
       const response = await fetch(
@@ -45,15 +79,5 @@ export default function TopBlock(AppProps: { type: any }) {
     //Recently Played - image, Name, Link, Artist, Time
   }
 
-  return (
-    <div className="topBlocks">
-      <Header type={AppProps.type}></Header>
-      <div className="songListAndButtons">
-        {AppProps.type != "recentlyPlayed" && (
-          <TimeButtons select={time} onSelect={setTime} />
-        )}
-        <AllBlocks data={blocks} type={AppProps.type} />
-      </div>
-    </div>
-  );
+  return <>{renderBlocks()}</>;
 }

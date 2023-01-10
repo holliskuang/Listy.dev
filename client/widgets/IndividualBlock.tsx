@@ -15,20 +15,23 @@ export default function IndividualBlock(AppProps: {
   const { number, image, genres, link, name, type, artists } = AppProps;
   const router = useRouter();
 
-  function adjustToLocalTime() :string{
-    var localDate= new Date(AppProps.timeStamp);
-    var HourMinute= localDate.toLocaleString([],{hour: "2-digit", minute: "2-digit"});
+  function adjustToLocalTime(): string {
+    var localDate = new Date(AppProps.timeStamp);
+    var HourMinute = localDate.toLocaleString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     if (HourMinute[0] === "0") {
       HourMinute = HourMinute.slice(1);
     }
     //if date is not today, show day of week
     if (localDate.toDateString() !== new Date().toDateString()) {
-      var DayOfWeek = localDate.toLocaleString([],{weekday: "short"});
+      var DayOfWeek = localDate.toLocaleString([], { weekday: "short" });
       HourMinute = DayOfWeek + " " + HourMinute;
     }
     return HourMinute;
   }
-  var time:string= adjustToLocalTime();
+  var time: string = adjustToLocalTime();
 
   function getTitleCase(str: string) {
     const titleCase = str
@@ -58,7 +61,7 @@ export default function IndividualBlock(AppProps: {
       onClick={() => {
         router.push(link);
       }}
-      sx={{ "&:hover": { cursor: "pointer" } }}
+      sx={{  padding: "10px 20px" ,borderRadius: "1%", mb:"10px" , "&:hover": { cursor: "pointer" ,   filter: "brightness(110%)" } }}
     >
       <FlexStart>
         {number}
@@ -67,6 +70,8 @@ export default function IndividualBlock(AppProps: {
           sx={{
             height: 80,
             width: 80,
+            borderRadius: "10%",
+            margin: "10px"
           }}
           src={image}
         />
@@ -99,16 +104,14 @@ export default function IndividualBlock(AppProps: {
       )}
 
       {type === "recentlyPlayed" && (
-        <FlexStart     sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        <Box sx={{ width: "100%" }}>{name}</Box>
-        <Box>{artists}</Box>
-        <Box>{time}</Box>
-      </FlexStart>
+        <FlexStart className="recentlyPlayedBlock" 
+        >
+          <Box className="RPNameArtists" sx={{ml:"20px"}}>
+            <Box sx={{ width: "100%", fontSize: "18px" }}>{name}</Box>
+            <Box sx={{ fontWeight: "0" }}>{artists}</Box>
+          </Box>
+          <Box className="RPTime">{time}</Box>
+        </FlexStart>
       )}
     </FlexStart>
   );

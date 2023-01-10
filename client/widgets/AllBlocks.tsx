@@ -11,7 +11,6 @@ export default function AllBlocks(AppProps: {
   if (AppProps.type === "artists") {
     return (
       <>
-      
         {array.map((block: any) => (
           <IndividualBlock
             number={parseInt(block[0]) + 1}
@@ -51,7 +50,7 @@ export default function AllBlocks(AppProps: {
   else if (AppProps.type === "recentlyPlayed") {
     return (
       <>
-         {array.map((block: any) => (
+        {array.map((block: any) => (
           <IndividualBlock
             image={block[1].track.album.images[0].url}
             name={block[1].track.name}
