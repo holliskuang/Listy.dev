@@ -61,52 +61,51 @@ export default function IndividualBlock(AppProps: {
       onClick={() => {
         router.push(link);
       }}
-      sx={{  padding: "10px 20px" ,borderRadius: "1%", mb:"10px" , "&:hover": { cursor: "pointer" ,   filter: "brightness(110%)" } }}
+      sx={{
+        padding: "10px 20px",
+        borderRadius: "1%",
+        mb: "10px",
+        "&:hover": { cursor: "pointer", filter: "brightness(110%)" },
+      }}
+      className={`individualBlock${AppProps.type}`}
     >
-      <FlexStart>
-        {number}
+      <FlexStart sx={{ ml: "30px" }}>
         <Box
-          component="img"
           sx={{
-            height: 80,
-            width: 80,
-            borderRadius: "10%",
-            margin: "10px"
+            fontSize: "18px",
+            fontWeight: "bold",
+            mr: "10px",
+            color: "#50496d",
           }}
-          src={image}
-        />
+        >
+          {number}
+        </Box>
+        <div className="crop">
+          <img className="listImage" src={image} />
+        </div>
       </FlexStart>
 
       {type === "artists" && (
-        <FlexStart
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-          }}
-        >
-          <Box sx={{ width: "100%" }}>{name}</Box>
-          <Box>{applyTitleCase([genres.slice(0, 3)])}</Box>
+        <FlexStart className="tracksBlock">
+          <Box className="tracksNameArtists" sx={{ ml: "15px" }}>
+            <Box sx={{ width: "100%", fontSize: "18px" }}>{name}</Box>
+            <Box>{applyTitleCase([genres.slice(0, 3)])}</Box>
+          </Box>
         </FlexStart>
       )}
 
       {type === "tracks" && (
-        <FlexStart
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-          }}
-        >
-          <Box sx={{ width: "100%" }}>{name}</Box>
-          <Box>{artists}</Box>
+        <FlexStart className="tracksBlock">
+          <Box className="tracksNameArtists" sx={{ ml: "15px" }}>
+            <Box sx={{ width: "100%", fontSize: "18px" }}>{name}</Box>
+            <Box>{artists}</Box>
+          </Box>
         </FlexStart>
       )}
 
       {type === "recentlyPlayed" && (
-        <FlexStart className="recentlyPlayedBlock" 
-        >
-          <Box className="RPNameArtists" sx={{ml:"20px"}}>
+        <FlexStart className="recentlyPlayedBlock">
+          <Box className="RPNameArtists" sx={{ ml: "20px" }}>
             <Box sx={{ width: "100%", fontSize: "18px" }}>{name}</Box>
             <Box sx={{ fontWeight: "0" }}>{artists}</Box>
           </Box>

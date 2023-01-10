@@ -176,7 +176,7 @@ app.get("/recently_played*", function (req, res) {
 
   const date = new Date();
   const time = date.getTime();
-  const urlHelper = `https://api.spotify.com/v1/me/player/recently-played#before=${time}&limit=50`;
+  const urlHelper = `https://api.spotify.com/v1/me/player/recently-played/?limit=50`;
   const authOptions = {
     method: "GET",
     headers: {
