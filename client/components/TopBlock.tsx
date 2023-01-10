@@ -9,7 +9,7 @@ export default function TopBlock(AppProps: { type: any }) {
   useEffect(() => {
     getTop();
   }, [time]);
-  
+
   async function getTop() {
     if (AppProps.type != "recentlyPlayed") {
       const response = await fetch(
@@ -47,11 +47,10 @@ export default function TopBlock(AppProps: { type: any }) {
 
   return (
     <div className="topBlocks">
-      <Header></Header>
+      <Header type={AppProps.type}></Header>
       <div className="songListAndButtons">
         {AppProps.type != "recentlyPlayed" && (
-             <TimeButtons select={time} onSelect={setTime} />
-          
+          <TimeButtons select={time} onSelect={setTime} />
         )}
         <AllBlocks data={blocks} type={AppProps.type} />
       </div>
