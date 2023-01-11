@@ -6,6 +6,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
+import { TransitionProps } from "@mui/material/transitions";
 
 export default function FormDialog(AppProps: {
   type: string;
@@ -14,6 +16,8 @@ export default function FormDialog(AppProps: {
 }) {
   const [open, setOpen] = React.useState(false);
   const [currentField, updateCurrentField] = React.useState("");
+
+
 
   const handleSubmit = async () => {
     handleClose();
@@ -33,16 +37,19 @@ export default function FormDialog(AppProps: {
     updateCurrentField(e.target.value);
   };
 
-
   return (
     <div>
       <button className="scrollButton" onClick={handleClickOpen}>
         Create Playlist
       </button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>One More Thing!</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        className="dialog"
+      >
+        <DialogTitle className="dialogTitle">One More Thing!</DialogTitle>
+        <DialogContent >
+          <DialogContentText className="dialogContent">
             What would you like to name your new playlist?
           </DialogContentText>
           <TextField
@@ -56,8 +63,8 @@ export default function FormDialog(AppProps: {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button className="dialogButton" onClick={handleClose}>Cancel</Button>
+          <Button className="dialogButton" onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
     </div>

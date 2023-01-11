@@ -943,6 +943,31 @@ a {
   transition: all 0.1s;
  
 }
-.scrollButton:hover{
-  background-color: brighten(#50496d, 100%);
+.scrollButton:hover {
+  filter: brightness(120%);
+}
+.dialogButton{
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 40px;
+  color:white;
+  border: 2px solid #50496d;
+  background-color: #50496d;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.dialogButton:hover {
+  filter: brightness(120%) !important;
+}
+
+.dialogContent {
+  font-size: 20px;
+}
+.dialogTitle{
+  font-size: 30px;
+  font-weight: bold;
+
 }
