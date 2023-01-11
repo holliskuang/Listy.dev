@@ -138,7 +138,8 @@ html {
 
 body {
   background-color: var(--ui-color-background-primary);
-  color: var(--ui-color-typography-body);
+  color: black;
+
   font-family: "Circular Spotify Tx T Bold";
   font-feature-settings: "liga", "kern";
   font-size: var(--ui-typography-p);
@@ -872,6 +873,7 @@ a {
   display: flex;
   flex-direction: row;
   margin: 2.5em 0 0;
+  justify-content: center;
   text-align: center;
   color: #aba5c3;
   font-size: 0.8em;
@@ -893,14 +895,15 @@ a {
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.02);
     overflow-x: hidden;
-    width: 1025px;
-    left: calc(50% + 50px);
+    width: 68%;
+    left: calc(50% + 60px);
     margin-left: -512px;
     opacity: 0.75;
     transform: translate3d(0, 100%, 0);
     transition: all 0.3s cubic-bezier(0.87, 0.38, 0.27, 0.95);
     display: flex;
     flex-direction: row;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   }
   .action-buttons.action-buttons--scrolled {
     opacity: 1;
@@ -924,4 +927,22 @@ a {
 
 .extra_box {
   height: 80px;
+}
+
+.scrollButton{
+  margin-left: 30px;
+  margin-right: 50px;
+  padding: 15px 40px;
+  border-radius: 40px;
+  border: 2px solid #50496d;
+  color:white;
+  background-color: #50496d;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s;
+ 
+}
+.scrollButton:hover{
+  background-color: brighten(#50496d, 100%);
 }
