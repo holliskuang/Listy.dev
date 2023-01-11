@@ -17,8 +17,6 @@ export default function FormDialog(AppProps: {
   const [open, setOpen] = React.useState(false);
   const [currentField, updateCurrentField] = React.useState("");
 
-
-
   const handleSubmit = async () => {
     handleClose();
     AppProps.setPlaylistTitle(currentField);
@@ -42,13 +40,10 @@ export default function FormDialog(AppProps: {
       <button className="scrollButton" onClick={handleClickOpen}>
         Create Playlist
       </button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        className="dialog"
-      >
+
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle className="dialogTitle">One More Thing!</DialogTitle>
-        <DialogContent >
+        <DialogContent>
           <DialogContentText className="dialogContent">
             What would you like to name your new playlist?
           </DialogContentText>
@@ -63,8 +58,12 @@ export default function FormDialog(AppProps: {
           />
         </DialogContent>
         <DialogActions>
-          <Button className="dialogButton" onClick={handleClose}>Cancel</Button>
-          <Button className="dialogButton" onClick={handleSubmit}>Submit</Button>
+          <Button className="dialogButton" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button className="dialogButton" onClick={handleSubmit}>
+            Submit
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
