@@ -32,7 +32,7 @@ export default function FormDialog(AppProps: {
   const handleTextChange = (e: any) => {
     updateCurrentField(e.target.value);
   };
-  console.log(currentField);
+
 
   return (
     <div>

@@ -115,7 +115,7 @@ app.get("/callback", function (req, res) {
         // use the access token to access the Spotify Web API
         const aPromise = new Promise(function (resolve, reject) {
           request.get(options, function (error, response, body) {
-            // console.log(body);
+     
             if (error) reject(error);
             else {
               resolve(body.id);

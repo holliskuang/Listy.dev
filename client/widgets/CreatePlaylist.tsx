@@ -16,7 +16,7 @@ export default function CreatePlaylist(props: {
   const [scrollTop, setScrollTop] = useState(true);
   // Isolate Track URIs for Top Tracks
   const trackURI = props.data.map((block: any) => block[1].uri);
-  console.log(trackURI);
+
   // create playlist when form gets submitted
   useEffect(() => {
     if (playlistTitle != null) {
@@ -36,7 +36,6 @@ export default function CreatePlaylist(props: {
   useEffect(() => {
     if (playlistURL != "" && playlistImage != "") {
       setPopup(true);
-      console.log("popup is true, playlistURL != ''");
     }
   }, [playlistURL]);
 
@@ -147,7 +146,7 @@ export default function CreatePlaylist(props: {
         });
       }
 
-      console.log("done");
+
 
       setTimeout(() => {
         createPopup(id);
@@ -165,7 +164,7 @@ export default function CreatePlaylist(props: {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+   
         setPlaylistImage(data.images[1].url);
         setPlaylistURL(data.external_urls.spotify);
       });

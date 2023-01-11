@@ -12,7 +12,7 @@ export default function CallBack() {
     let id: any = null;
 
     const queryString = window.location.search;
-    console.log(queryString);
+   
     if (queryString.length > 0) {
       const urlParams = new URLSearchParams(queryString);
       access_token = urlParams.get("access_token");
