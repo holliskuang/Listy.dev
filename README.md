@@ -47,7 +47,7 @@
 <li> :pray: In desparate need of a new playlist that will be generated straight to your Spotify account?</li>
 </ul>
 </p>
-<p>Listy is what you are looking for!</p>
+<p>Listy is everything you've been looking for and more!</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
