@@ -103,12 +103,19 @@ _Below is an example of how you can instruct your audience on installing and set
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Basic Documentation
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+There are 3 Sections of this Web App:
+<ul><li>Top Tracks</li> <li>Top Artists</li> <li>Recently Played </li> </ul>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<p>For the Top Tracks and Top Artists section, you have the option to select a timeframe of 
+<ul><li>All Time</li> <li>Most Recent 6 Months</li> <li>Most Recent Month</li> </ul></p>
 
+<p>When you select your section and timeframe of interest, you will receive a list of your top songs/artists. For the Top Tracks section, you will receive your top 50 tracks of the selected timeframe. For the Top Artists section, you will receive a list of your top 50 artists. For the Recently Played section, you will receive your 50 most recent tracks that you have played.</p>
+
+<p>Each of the items on the list you generate will link you to their respective Spotify page.</p>
+
+<p> You can also create a playlist from your list of songs/artists which will create a playlist directly in your Spotify Account. No extra work required, just name your playlist and it will show up on your Spotify App.</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -116,13 +123,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+- [x] Add Top Artists Page
+- [x] Add Top Tracks Page
+- [x] Add Recently Played Page
+- [x] Add Functionality to Create Playlist
+- [ ] Get Approval for Autherntication Quota Extension
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
@@ -173,10 +178,8 @@ Project Link: [https://github.com/holliskuang/Listy.dev](https://github.com/holl
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-* [Choose an Open Source License](https://choosealicense.com)
+* [Spotify for Developers](https://developer.spotify.com/)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
 * [Img Shields](https://shields.io)
 * [GitHub Pages](https://pages.github.com)
 * [Font Awesome](https://fontawesome.com)
