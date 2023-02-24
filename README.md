@@ -42,9 +42,9 @@
 
 <p>A web app that utilizes Spotify's API in order to generate curated Spotify playlists of the songs/artists you keep on repeat. 
 <ul>
-<li>Have you ever wondered what your top songs or artists of all-time are?</li>
-<li>Did you just listen to a song that you forgot to heart?</li>
-<li>In desparate need of a new playlist that will be generated straight to your Spotify account?</li>
+<li> 🤔 Have you ever wondered what your top songs or artists of all-time are?</li>
+<li> ❤️ Did you just listen to a song that you forgot to heart?</li>
+<li> :pray: In desparate need of a new playlist that will be generated straight to your Spotify account?</li>
 </ul>
 </p>
 <p>Listy is what you are looking for!</p>
@@ -55,6 +55,7 @@
 
 ### Built With
 
+* [![TypeScript][TypeScript.js]][TypeScript-url]
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![Express][Express.js]][Express-url]
@@ -201,3 +202,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [Express-url]: https://expressjs.com/
 [MUI]: https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white
 [MUI-url]: https://mui.com/
+[TypeScript.js]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
