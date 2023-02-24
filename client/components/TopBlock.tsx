@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import AllBlocks from "../widgets/AllBlocks";
 import Header from "../components/MainHeader";
 import TimeButtons from "../widgets/TimeButtons";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function TopBlock(AppProps: { type: any }) {
@@ -62,6 +64,11 @@ export default function TopBlock(AppProps: { type: any }) {
         .then((data) => setBlocks(data.items));
       } catch (error) {
         console.log(error);
+        toast('🦄 URL Must be HTTP!', {
+          position: 'bottom-right',
+          autoClose: 5000,
+          theme: 'light',
+        });
       }
     } else if (AppProps.type === "recentlyPlayed") {
       await fetch(
