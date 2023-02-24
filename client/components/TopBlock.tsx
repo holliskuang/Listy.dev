@@ -47,6 +47,7 @@ export default function TopBlock(AppProps: { type: any }) {
   };
   async function getTop() {
     if (AppProps.type != "recentlyPlayed") {
+      try {
       const response = await fetch(
         `https://api.spotify.com/v1/me/top/${AppProps.type}?limit=50&time_range=${time}`,
         {
@@ -59,6 +60,9 @@ export default function TopBlock(AppProps: { type: any }) {
       )
         .then((response) => response.json())
         .then((data) => setBlocks(data.items));
+      } catch (error) {
+        console.log(error);
+      }
     } else if (AppProps.type === "recentlyPlayed") {
       await fetch(
         `https://us-central1-listi-f7e6a.cloudfunctions.net/app/recently_played/?access_token=${localStorage.getItem(
