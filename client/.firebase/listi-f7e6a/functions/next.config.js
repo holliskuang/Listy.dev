@@ -1,8 +1,9 @@
-"use strict";
-
-// next.config.js
-var nextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  optimizeFonts: false
+  optimizeFonts: false,
 };
+
+
+
 module.exports = nextConfig;
