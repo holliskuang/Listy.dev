@@ -1,24 +1,20 @@
 const functions = require("firebase-functions");
 const express = require("express"); // Express web server framework
 const cors = require("cors"); // CORS support
-const admin = require("firebase-admin"); // Firebase Admin SDK
+const request = require("request");
 const querystring = require("querystring");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const path = require("path");
 const fetch = require("node-fetch");
-const fileURLToPath = require("url");
-
-admin.initializeApp();
 
 /* secret variables */
 dotenv.config();
-var client_id = process.env.client_id; // Your client id
-var client_secret = process.env.client_secret; // Your secret
-var redirect_uri = process.env.redirect_uri; // Your redirect uri
+var client_id = process.env.CLIENT_ID; // Your client id
+var client_secret = process.env.CLIENT_SECRET; // Your secret
+var redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -71,7 +67,7 @@ app.get("/login", function (req, res) {
   );
 });
 
-app.get("/callback", function (req, res) {
+app.get("/callback*", function (req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
 
@@ -81,7 +77,7 @@ app.get("/callback", function (req, res) {
 
   if (state === null || state !== storedState) {
     res.redirect(
-      "http://localhost:3000/callback?" +
+      "https://listy.dev/callback?" +
         querystring.stringify({
           error: "state_mismatch",
         })
@@ -126,7 +122,7 @@ app.get("/callback", function (req, res) {
 
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          "http://localhost:3000/callback?" +
+          "https://listy.dev/callback?" +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token,
@@ -135,7 +131,7 @@ app.get("/callback", function (req, res) {
         );
       } else {
         res.redirect(
-          "http://localhost:3000/callback?" +
+          "https://listy.dev/callback?" +
             querystring.stringify({
               error: "invalid_token",
             })
@@ -145,7 +141,7 @@ app.get("/callback", function (req, res) {
   }
 });
 
-app.get("/refresh_token", function (req, res) {
+app.get("/refresh_token*", function (req, res) {
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
   var authOptions = {

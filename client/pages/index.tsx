@@ -6,7 +6,8 @@ export default function Home() {
   const router = useRouter();
 
   function spotifyLogIn() {
-    router.push(`http://localhost:8888/login`);
+    router.push(`https://us-central1-listi-f7e6a.cloudfunctions.net/app/login`);
+    
   }
 
   return (

@@ -22,10 +22,12 @@
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.18.0",
     "helmet": "^6.0.1",
+    "morgan": "^1.10.0",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.20",
     "querystring": "~0.2.0",
-    "request": "~2.83.0"
+    "request": "~2.83.0",
+    "require": "^2.4.20"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"

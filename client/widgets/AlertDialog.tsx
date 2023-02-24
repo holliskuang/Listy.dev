@@ -7,6 +7,13 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+
+const cache = createCache({
+  key: "ccss",
+  prepend: true,
+});
 
 export default function AlertDialog(props: { img: string; url: string }) {
   useEffect(() => {
@@ -27,39 +34,41 @@ export default function AlertDialog(props: { img: string; url: string }) {
   }
 
   return (
-    <div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <div className="popUp">
-          <DialogTitle id="alert-dialog-title">Success!</DialogTitle>
-          <DialogContent>
-            <img
-              className="popUpImg"
-              src={props.img}
-              alt="playlist"
-              onClick={() => openlink(props.url)}
-            />
-            <DialogContentText id="alert-dialog-description">
-              Your playlist has been created.
-            </DialogContentText>
-            <div className="popUpButtonBox">
-              <Button className="popUpButtons" onClick={handleClose}>
-                Close
-              </Button>
-              <Button
-                className="popUpButtons"
+    <CacheProvider value={cache}>
+      <div>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <div className="popUp">
+            <DialogTitle id="alert-dialog-title">Success!</DialogTitle>
+            <DialogContent>
+              <img
+                className="popUpImg"
+                src={props.img}
+                alt="playlist"
                 onClick={() => openlink(props.url)}
-              >
-                Let Me See!
-              </Button>
-            </div>
-          </DialogContent>
-        </div>
-      </Dialog>
-    </div>
+              />
+              <DialogContentText id="alert-dialog-description">
+                Your playlist has been created.
+              </DialogContentText>
+              <div className="popUpButtonBox">
+                <Button className="popUpButtons" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button
+                  className="popUpButtons"
+                  onClick={() => openlink(props.url)}
+                >
+                  Let Me See!
+                </Button>
+              </div>
+            </DialogContent>
+          </div>
+        </Dialog>
+      </div>
+    </CacheProvider>
   );
 }

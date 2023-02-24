@@ -8,6 +8,13 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+
+const cache = createCache({
+  key: "css",
+  prepend: true,
+});
 
 export default function FormDialog(AppProps: {
   type: string;
@@ -36,36 +43,38 @@ export default function FormDialog(AppProps: {
   };
 
   return (
-    <div>
-      <button className="scrollButton" onClick={handleClickOpen}>
-        Create Playlist
-      </button>
+    <CacheProvider value={cache}>
+      <div>
+        <button className="scrollButton" onClick={handleClickOpen}>
+          Create Playlist
+        </button>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle className="dialogTitle">One More Thing!</DialogTitle>
-        <DialogContent>
-          <DialogContentText className="dialogContent">
-            What would you like to name your new playlist?
-          </DialogContentText>
-          <TextField
-            onChange={handleTextChange}
-            autoFocus
-            margin="dense"
-            name="name"
-            fullWidth
-            variant="standard"
-            value={currentField}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button className="dialogButton" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button className="dialogButton" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle className="dialogTitle">One More Thing!</DialogTitle>
+          <DialogContent>
+            <DialogContentText className="dialogContent">
+              What would you like to name your new playlist?
+            </DialogContentText>
+            <TextField
+              onChange={handleTextChange}
+              autoFocus
+              margin="dense"
+              name="name"
+              fullWidth
+              variant="standard"
+              value={currentField}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button className="dialogButton" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button className="dialogButton" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    </CacheProvider>
   );
 }

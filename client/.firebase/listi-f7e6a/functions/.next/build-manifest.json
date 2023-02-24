@@ -1,0 +1,74 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-c67a75d1b6f99dc8.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/dsvUYEssSJYv0pbM1izCu/_buildManifest.js",
+    "static/dsvUYEssSJYv0pbM1izCu/_ssgManifest.js"
+  ],
+  "rootMainFiles": [],
+  "pages": {
+    "/": [
+      "static/chunks/webpack-c4acd79e87956a0e.js",
+      "static/chunks/framework-114634acb84f8baa.js",
+      "static/chunks/main-87bebbee3647a317.js",
+      "static/chunks/582-60ab685855cbbfbe.js",
+      "static/chunks/pages/index-22bc1d7775d3edf2.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-c4acd79e87956a0e.js",
+      "static/chunks/framework-114634acb84f8baa.js",
+      "static/chunks/main-87bebbee3647a317.js",
+      "static/css/8b1151de28860410.css",
+      "static/chunks/pages/_app-135ed2d9870018fa.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-c4acd79e87956a0e.js",
+      "static/chunks/framework-114634acb84f8baa.js",
+      "static/chunks/main-87bebbee3647a317.js",
+      "static/chunks/pages/_error-8353112a01355ec2.js"
+    ],
+    "/callback": [
+      "static/chunks/webpack-c4acd79e87956a0e.js",
+      "static/chunks/framework-114634acb84f8baa.js",
+      "static/chunks/main-87bebbee3647a317.js",
+      "static/chunks/582-60ab685855cbbfbe.js",
+      "static/chunks/674-438ac9d6280ace05.js",
+      "static/chunks/249-8d29bb9abfc88223.js",
+      "static/chunks/pages/callback-9f889d9cab44b185.js"
+    ],
+    "/recently_played": [
+      "static/chunks/webpack-c4acd79e87956a0e.js",
+      "static/chunks/framework-114634acb84f8baa.js",
+      "static/chunks/main-87bebbee3647a317.js",
+      "static/chunks/582-60ab685855cbbfbe.js",
+      "static/chunks/674-438ac9d6280ace05.js",
+      "static/chunks/862-c18eef05bdd1b228.js",
+      "static/chunks/583-735ecce01e118198.js",
+      "static/chunks/pages/recently_played-fe1941075c82a793.js"
+    ],
+    "/top-artists": [
+      "static/chunks/webpack-c4acd79e87956a0e.js",
+      "static/chunks/framework-114634acb84f8baa.js",
+      "static/chunks/main-87bebbee3647a317.js",
+      "static/chunks/582-60ab685855cbbfbe.js",
+      "static/chunks/674-438ac9d6280ace05.js",
+      "static/chunks/862-c18eef05bdd1b228.js",
+      "static/chunks/583-735ecce01e118198.js",
+      "static/chunks/pages/top-artists-e57219ae6bf89fe5.js"
+    ],
+    "/top-tracks": [
+      "static/chunks/webpack-c4acd79e87956a0e.js",
+      "static/chunks/framework-114634acb84f8baa.js",
+      "static/chunks/main-87bebbee3647a317.js",
+      "static/chunks/582-60ab685855cbbfbe.js",
+      "static/chunks/674-438ac9d6280ace05.js",
+      "static/chunks/862-c18eef05bdd1b228.js",
+      "static/chunks/583-735ecce01e118198.js",
+      "static/chunks/pages/top-tracks-70685bf40c8e1e79.js"
+    ]
+  },
+  "ampFirstPages": []
+}

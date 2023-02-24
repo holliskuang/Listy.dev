@@ -3,6 +3,7 @@ import AllBlocks from "../widgets/AllBlocks";
 import Header from "../components/MainHeader";
 import TimeButtons from "../widgets/TimeButtons";
 
+
 export default function TopBlock(AppProps: { type: any }) {
   const [time, setTime] = useState("long_term");
   const [blocks, setBlocks] = useState({});
@@ -60,7 +61,7 @@ export default function TopBlock(AppProps: { type: any }) {
         .then((data) => setBlocks(data.items));
     } else if (AppProps.type === "recentlyPlayed") {
       await fetch(
-        `http://localhost:8888/recently_played/?access_token=${localStorage.getItem(
+        `https://us-central1-listi-f7e6a.cloudfunctions.net/app/recently_played/?access_token=${localStorage.getItem(
           "access_token"
         )}`,
         {
@@ -78,6 +79,5 @@ export default function TopBlock(AppProps: { type: any }) {
     // Song - image, Name, Link , Artist
     //Recently Played - image, Name, Link, Artist, Time
   }
-
   return <>{renderBlocks()}</>;
 }

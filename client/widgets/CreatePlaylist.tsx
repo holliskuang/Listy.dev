@@ -3,6 +3,14 @@ import FormDialog from "./FormDialog";
 import { useState, useEffect } from "react";
 import AlertDialog from "./AlertDialog";
 import classNames from "classnames";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+
+
+const cache = createCache({
+  key: "ccss",
+  prepend: true,
+});
 
 export default function CreatePlaylist(props: {
   type: string;
@@ -52,7 +60,7 @@ export default function CreatePlaylist(props: {
     const artistURIs = getURI();
     const tracks = await Promise.all(
       artistURIs.map((artistURI: string) => {
-        return fetch(
+        const playListsongs = fetch(
           `https://api.spotify.com/v1/artists/${artistURI}/top-tracks?market=US`,
           {
             method: "GET",
@@ -62,6 +70,7 @@ export default function CreatePlaylist(props: {
             },
           }
         );
+        return playListsongs;
       })
     );
 
@@ -146,8 +155,6 @@ export default function CreatePlaylist(props: {
         });
       }
 
-
-
       setTimeout(() => {
         createPopup(id);
       }, 1000);
@@ -164,7 +171,6 @@ export default function CreatePlaylist(props: {
     })
       .then((response) => response.json())
       .then((data) => {
-   
         setPlaylistImage(data.images[1].url);
         setPlaylistURL(data.external_urls.spotify);
       });
@@ -179,54 +185,57 @@ export default function CreatePlaylist(props: {
   }
 
   return (
-    <div>
-      <FlexBetween
-        className={classNames("action-buttons", {
-          "action-buttons--scrolled": !scrollTop,
-        })}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          ...props.sx,
-        }}
-      >
+    <CacheProvider value={cache}>
+      <div>
         <FlexBetween
-          width="100%"
-          sx={{ justifyContent: "center" }}
-          className="action-buttons__info"
+          className={classNames("action-buttons", {
+            "action-buttons--scrolled": !scrollTop,
+          })}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            ...props.sx,
+          }}
         >
-          <FlexBetween className="scrollTitle">
-            Create Your Top{" "}
-            {(props.type === "tracks" && "Tracks") ||
-              (props.type === "artists" && "Artists") ||
-              (props.type === "recentlyPlayed" && "Recent Hits")}{" "}
-            Playlist!
-          </FlexBetween>
-          {props.type !== "recentlyPlayed" ? (
-            <FlexBetween>
-              This creates a playlist from your Top-50 {props.type}{" "}
-              {props.type == "artists" &&
-                `with a
+          <FlexBetween
+            width="100%"
+            sx={{ justifyContent: "center" }}
+            className="action-buttons__info"
+          >
+            <FlexBetween className="scrollTitle">
+              Create Your Top{" "}
+              {(props.type === "tracks" && "Tracks") ||
+                (props.type === "artists" && "Artists") ||
+                (props.type === "recentlyPlayed" && "Recent Hits")}{" "}
+              Playlist!
+            </FlexBetween>
+            {props.type !== "recentlyPlayed" ? (
+              <FlexBetween>
+                This creates a playlist from your Top-50 {props.type}{" "}
+                {props.type == "artists" &&
+                  `with a
           track from each artist.`}
-            </FlexBetween>
-          ) : (
-            <FlexBetween>
-              This creates a playlist from your 50 most recently played tracks!
-            </FlexBetween>
+              </FlexBetween>
+            ) : (
+              <FlexBetween>
+                This creates a playlist from your 50 most recently played
+                tracks!
+              </FlexBetween>
+            )}
+          </FlexBetween>
+          <FormDialog
+            type={props.type}
+            data={props.data}
+            setPlaylistTitle={setPlaylistTitle}
+          ></FormDialog>
+          {popup && (
+            <AlertDialog url={playlistURL} img={playlistImage}></AlertDialog>
           )}
         </FlexBetween>
-        <FormDialog
-          type={props.type}
-          data={props.data}
-          setPlaylistTitle={setPlaylistTitle}
-        ></FormDialog>
-        {popup && (
-          <AlertDialog url={playlistURL} img={playlistImage}></AlertDialog>
-        )}
-      </FlexBetween>
-      <div className="extra_box"></div>
-    </div>
+        <div className="extra_box"></div>
+      </div>
+    </CacheProvider>
   );
 }

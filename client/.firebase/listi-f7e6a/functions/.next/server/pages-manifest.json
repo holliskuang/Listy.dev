@@ -1,0 +1,12 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/api/hello": "pages/api/hello.js",
+  "/callback": "pages/callback.html",
+  "/": "pages/index.html",
+  "/recently_played": "pages/recently_played.html",
+  "/top-artists": "pages/top-artists.html",
+  "/top-tracks": "pages/top-tracks.html",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
+}

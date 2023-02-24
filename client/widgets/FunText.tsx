@@ -6,7 +6,7 @@ export default function FunText() {
       className="typingContainer"
       sx={{
         color: "black",
-        fontSize: "50px",
+        fontSize: "2.5rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
