@@ -21,10 +21,6 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -69,34 +65,22 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This App is readily available on [Listy.dev](https://listy.dev)
 
-### Prerequisites
+If you are interested in hosting your own version of this app, you will need to create an account with [Spotify For Developers](https://developer.spotify.com/) in order to access the necessary APIs that this app utilizes.
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+3. Fill in Client Secret Environment Variable with what you receive from your Spotify For Developers Account. This will provide you access to Spotify Web APIs
+
+4. Replace the Redirect URI with your personal URL of choice to host the server
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -115,7 +99,7 @@ There are 3 Sections of this Web App:
 
 <p>Each of the items on the list you generate will link you to their respective Spotify page.</p>
 
-<p> You can also create a playlist from your list of songs/artists which will create a playlist directly in your Spotify Account. No extra work required, just name your playlist and it will show up on your Spotify App.</p>
+<p> You can also create a playlist from your list of songs/artists which will create a playlist directly in your Spotify Account. No extra work required! Just name your playlist and it will show up on your Spotify App.</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
