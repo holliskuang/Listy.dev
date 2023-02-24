@@ -64,7 +64,7 @@ export default function TopBlock(AppProps: { type: any }) {
         .then((data) => setBlocks(data.items));
       } catch (error) {
         console.log(error);
-        toast('🦄 Sorry! Spotify Only Allows a limited number of authentications. We have currently hit our limit', {
+        toast('🦄 Sorry! Spotify Only Allows a limited number of authentications. If you are seeing this message, we have currently hit our limit', {
           position: 'bottom-right',
           autoClose: 100000,
           theme: 'light',
