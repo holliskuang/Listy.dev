@@ -2,17 +2,8 @@
 
 @font-face {
   font-family: "Circular Spotify Tx T Bold";
-  src: url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.eot");
-  src: url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.eot?#iefix")
-      format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.woff2")
-      format("woff2"),
-    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.woff")
-      format("woff"),
-    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.ttf")
-      format("truetype"),
-    url("//db.onlinewebfonts.com/t/112ec584bfc481ccde03444e67f8fc3f.svg#Circular Spotify Tx T Bold")
-      format("svg");
+  src: ("../public/112ec584bfc481ccde03444e67f8fc3f.eot");
+  src: ("../public/112ec584bfc481ccde03444e67f8fc3f.woff2"), format("woff2");
 }
 
 :root {
