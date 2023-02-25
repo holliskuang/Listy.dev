@@ -9,29 +9,6 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -45,8 +22,6 @@
 </p>
 <p>Listy is everything you've been looking for and more!</p>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -56,9 +31,6 @@
 * [![React][React.js]][React-url]
 * [![Express][Express.js]][Express-url]
 * [![MUI][MUI]][MUI-url]
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -81,8 +53,6 @@ If you are interested in hosting your own version of this app, you will need to 
 3. Fill in Client Secret Environment Variable with what you receive from your Spotify For Developers Account. This will provide you access to Spotify Web APIs
 
 4. Replace the Redirect URI with your personal URL of choice to host the server
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -113,9 +83,7 @@ There are 3 Sections of this Web App:
 - [x] Add Functionality to Create Playlist
 - [ ] Get Approval for Autherntication Quota Extension
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+See the [open issues](https://github.com/holliskuang/Listy.dev/issues) for a full list of proposed features (and known issues).
 
 
 
@@ -133,16 +101,12 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -152,8 +116,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Hollis Kuang - kuanghollis@gmail.com
 
 Project Link: [https://github.com/holliskuang/Listy.dev](https://github.com/holliskuang/Listy.dev)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -168,8 +130,6 @@ Use this space to list resources you find helpful and would like to give credit 
 * [GitHub Pages](https://pages.github.com)
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
