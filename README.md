@@ -81,7 +81,7 @@ There are 3 Sections of this Web App:
 - [x] Add Top Tracks Page
 - [x] Add Recently Played Page
 - [x] Add Functionality to Create Playlist
-- [ ] Get Approval for Autherntication Quota Extension
+- [ ] Get Approval for Authentication Quota Extension
 
 See the [open issues](https://github.com/holliskuang/Listy.dev/issues) for a full list of proposed features (and known issues).
 
