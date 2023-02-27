@@ -14,6 +14,7 @@
 ## About The Project
 
 <p>A web app that utilizes Spotify's API in order to generate curated Spotify playlists of the songs/artists you keep on repeat. 
+    
 <ul>
 <li> 🤔 Have you ever wondered what your top songs or artists of all-time are?</li>
 <li> ❤️ Did you just listen to a song that you forgot to heart?</li>
